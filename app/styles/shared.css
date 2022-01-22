@@ -124,6 +124,10 @@
   }
 }
 
+.hamburgerMenu-nav-show {
+z-index: 9999;
+}
+
 @media only screen and (max-width: 1139px) {
   .header-nav-hide {
     display: none;

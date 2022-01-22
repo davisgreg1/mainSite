@@ -32,10 +32,6 @@ type MyMapProps = {
 const MyMap = (props: MyMapProps) => {
   const { customOptions } = props
   const data = useLoaderData()
-  console.log(
-    'GREG LOOK!  ~ file: index.tsx ~ line 123 ~ IndexRoute ~ data',
-    data
-  )
   const {
     ENV: { GOOGLE_MAP_ID, GOOGLE_MAP_API_KEY }
   } = data
