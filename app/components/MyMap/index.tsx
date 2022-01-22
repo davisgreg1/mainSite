@@ -1,68 +1,88 @@
-// import React, { useCallback, useState } from 'react'
-// import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api'
+import React, { useCallback, useState } from 'react'
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api'
+import { useLoaderData } from 'remix'
 
-// const containerStyle = {
-//   width: '400px',
-//   height: '400px'
-// }
+const containerStyle = {
+  width: '400px',
+  height: '400px'
+}
 
-// const center = {
-//   lat: 40.712776,
-//   lng: -74.005974
-// }
+const center = {
+  lat: 40.712776,
+  lng: -74.005974
+}
 
-// const MyMap = props => {
-//   const { customOptions } = props
-//   const GOOGLE_MAP_ID = process.env.GOOGLE_MAP_ID
-//   const GOOGLE_MAP_API_KEY = process.env.GOOGLE_MAP_API_KEY
-//   console.log('GREG LOOK!  ~ file: index.tsx ~ line 18 ~ GOOGLE_MAP_API_KEY', GOOGLE_MAP_API_KEY);
-//   console.log(
-//     'GREG LOOK!  ~ file: index.tsx ~ line 22 ~ GOOGLE_MAP_ID',
-//     GOOGLE_MAP_ID
-//   )
-//   const { isLoaded } = useJsApiLoader({
-//     id: 'google-map-script',
-//     googleMapsApiKey: GOOGLE_MAP_API_KEY
-//   })
+type CustomOptionsType = {
+  mapTypeControl?: boolean
+  zoom?: number
+  clickableIcons?: boolean
+  panControl?: boolean
+  rotateControl?: boolean
+  scaleControl?: boolean
+  streetViewControl?: boolean
+  zoomControl?: boolean
+  fullscreenControl?: boolean
+  mapId?: string
+}
 
-//   const [map, setMap] = useState(null)
+type MyMapProps = {
+  customOptions?: CustomOptionsType
+}
 
-//   const onLoad = useCallback(function callback (map) {
-//     setMap(map)
-//   }, [])
+const MyMap = (props: MyMapProps) => {
+  const { customOptions } = props
+  const data = useLoaderData()
+  console.log(
+    'GREG LOOK!  ~ file: index.tsx ~ line 123 ~ IndexRoute ~ data',
+    data
+  )
+  const {
+    ENV: { GOOGLE_MAP_ID, GOOGLE_MAP_API_KEY }
+  } = data
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: GOOGLE_MAP_API_KEY
+  })
 
-//   const onUnmount = useCallback(function callback (map) {
-//     setMap(null)
-//   }, [])
+  const [map, setMap] = useState(null)
 
-//   const mapOptions = {
-//     mapTypeControl: false,
-//     zoom: 15,
-//     clickableIcons: false,
-//     panControl: false,
-//     rotateControl: false,
-//     scaleControl: false,
-//     streetViewControl: false,
-//     zoomControl: false,
-//     fullscreenControl: false,
-//     mapId: GOOGLE_MAP_ID // ENV THIS
-//   }
+  const onLoad = useCallback(function callback (map) {
+    setMap(map)
+  }, [])
 
-//   return isLoaded ? (
-//     <GoogleMap
-//       mapContainerStyle={containerStyle}
-//       center={center}
-//       options={customOptions || mapOptions}
-//       onLoad={onLoad}
-//       onUnmount={onUnmount}
-//     >
-//       {/* Child components, such as markers, info windows, etc. */}
-//       <></>
-//       <Marker animation={google.maps.Animation.DROP} position={center} />
-//     </GoogleMap>
-//   ) : (
-//     <></>
-//   )
-// }
+  const onUnmount = useCallback(function callback (map) {
+    setMap(null)
+  }, [])
 
-// export default MyMap
+  const mapOptions = {
+    mapTypeControl: false,
+    zoom: 15,
+    clickableIcons: false,
+    panControl: false,
+    rotateControl: false,
+    scaleControl: false,
+    streetViewControl: false,
+    zoomControl: false,
+    fullscreenControl: false,
+    mapId: GOOGLE_MAP_ID
+  }
+
+  const modifiedCustomOptions = { ...customOptions, mapId: GOOGLE_MAP_ID }
+  return isLoaded ? (
+    <GoogleMap
+      mapContainerStyle={containerStyle}
+      center={center}
+      options={modifiedCustomOptions || mapOptions}
+      onLoad={onLoad}
+      onUnmount={onUnmount}
+    >
+      {/* Child components, such as markers, info windows, etc. */}
+      <></>
+      <Marker animation={google.maps.Animation.DROP} position={center} />
+    </GoogleMap>
+  ) : (
+    <></>
+  )
+}
+
+export default MyMap

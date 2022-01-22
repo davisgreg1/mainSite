@@ -1,6 +1,5 @@
-import React, { useRef, useEffect, useState } from 'react'
-import { LinksFunction, MetaFunction, Link } from 'remix'
-import { Helmet } from 'react-helmet'
+import React, { useEffect, useState } from 'react'
+import { LinksFunction, MetaFunction } from 'remix'
 import { useMediaQuery } from 'react-responsive'
 import { useInView } from 'react-intersection-observer'
 import { Cloud, renderSimpleIcon, ICloud } from 'react-icon-cloud'
@@ -9,7 +8,7 @@ import Particles from 'react-tsparticles'
 import particlesConfig from '~/particlesConfig'
 import portfolioBackImg from '../images/home/portfolioBackImg.jpeg'
 import MyFlipBook from '../components/MyFlipBook'
-// import MyMap from '../components/MyMap'
+import MyMap from '../components/MyMap'
 import {
   siJavascript,
   siTypescript,
@@ -53,18 +52,18 @@ export const links: LinksFunction = () => {
       href:
         'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css'
     },
-    // {
-    //   rel: 'preload',
-    //   href:
-    //     'https://drive.google.com/uc?export=view&id=1i9NVQ9SOEFbzVsIo0u51qcZcVTwFPCHX',
-    //   as: 'image'
-    // },
-    // {
-    //   rel: 'preload',
-    //   href:
-    //     'https://drive.google.com/uc?export=view&id=1mF-p0RvL9B0k-DDdFgPmWduSCfCk_MOb',
-    //   as: 'image'
-    // },
+    {
+      rel: 'preload',
+      href:
+        'https://drive.google.com/uc?export=view&id=1i9NVQ9SOEFbzVsIo0u51qcZcVTwFPCHX',
+      as: 'image'
+    },
+    {
+      rel: 'preload',
+      href:
+        'https://drive.google.com/uc?export=view&id=1mF-p0RvL9B0k-DDdFgPmWduSCfCk_MOb',
+      as: 'image'
+    },
     {
       rel: 'preload',
       href:
@@ -79,6 +78,15 @@ export let meta: MetaFunction = () => {
   return {
     title: `Home - Greg | FullStack Developer`,
     description: 'Welcome to my site'
+  }
+}
+
+export function loader () {
+  return {
+    ENV: {
+      GOOGLE_MAP_ID: process.env.GOOGLE_MAP_ID,
+      GOOGLE_MAP_API_KEY: process.env.GOOGLE_MAP_API_KEY
+    }
   }
 }
 
@@ -114,7 +122,6 @@ export default function IndexRoute () {
   const [isMobile, setIsMobile] = useState(isMobileVal)
   const [isTablet, setIsTablet] = useState(isTabletVal)
   const [isDesktop, setIsDesktop] = useState(isDesktopOrLaptop)
-  const [selectedIconName, setSelectedIconName] = useState('')
 
   useEffect(() => {
     setIsMobile(isMobileVal)
@@ -157,13 +164,13 @@ export default function IndexRoute () {
     },
     // https://www.goat1000.com/tagcanvas-options.php
     options: {
-      clickToFront: 500,
+      clickToFront: 250,
       depth: 1,
       imageScale: 2,
       initial: [0.1, -0.1],
       outlineColour: '#0000',
       reverse: false,
-      tooltip: 'div',
+      tooltip: isDesktopOrLaptop ? 'div' : 'native',
       tooltipDelay: 0,
       wheelZoom: false,
       shuffleTags: true,
@@ -197,7 +204,6 @@ export default function IndexRoute () {
 
   const customOptions = {
     mapTypeControl: false,
-    mapId: '', // .ENV THIS
     zoom: 15,
     clickableIcons: false,
     panControl: false,
@@ -324,7 +330,7 @@ export default function IndexRoute () {
         <h1 className='header-subheading-text'>Contact Me</h1>
         <div className='contact-container'>
           <div>form here</div>
-          {/* <MyMap customOptions={customOptions} /> */}
+          <MyMap customOptions={customOptions} />
         </div>
       </section>
     </div>
