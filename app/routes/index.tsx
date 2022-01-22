@@ -327,9 +327,9 @@ export default function IndexRoute () {
         className='section-content section'
         style={portfolioBackImgStyle}
       >
-        <h1 className='header-subheading-text'>Contact Me</h1>
+        {/* <h1 className='header-subheading-text'>Contact Me</h1> */}
         <div className='contact-container'>
-          <div>form here</div>
+          <div className="form-container">form here</div>
           <MyMap customOptions={customOptions} />
         </div>
       </section>

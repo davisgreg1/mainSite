@@ -3,13 +3,13 @@ import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api'
 import { useLoaderData } from 'remix'
 
 const containerStyle = {
-  width: '400px',
-  height: '400px'
+  width: '100%',
+  height: '100vh'
 }
 
 const center = {
-  lat: 40.712776,
-  lng: -74.005974
+  lat: 40.7561,
+  lng: -74.0035
 }
 
 type CustomOptionsType = {
