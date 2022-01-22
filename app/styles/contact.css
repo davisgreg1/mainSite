@@ -1,0 +1,51 @@
+body {
+    color: hsl(0, 0%, 100%);
+    background-image: radial-gradient(
+      circle,
+      rgba(153, 202, 20, 0.472) 0%,
+      rgba(170, 181, 15, 0.671) 100%,
+      rgba(201, 219, 121, 0.644) 50%
+    );
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .content {
+    height: 100%;
+    color: red;
+    width: 100%;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .glow {
+    font-size: 35px;
+    color: #ffffff;
+    text-align: center;
+    animation-duration: 1s;
+      animation-timing-function: cubic-bezier(0, 0, 0.56, -0.41);
+      animation-delay: 0s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-fill-mode: none;
+      animation-play-state: running;
+      animation-name: glow;
+  }
+  
+  @-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 10px #eeeeee, 0 0 20px #000000, 0 0 30px #000000,
+        0 0 40px #000000, 0 0 50px #9554b3, 0 0 60px #9554b3, 0 0 70px #9554b3;
+    }
+    to {
+      text-shadow: 0 0 20px #eeeeee, 0 0 30px #ff4da6, 0 0 40px #ff4da6,
+        0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+  }
