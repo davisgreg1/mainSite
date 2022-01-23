@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { LinksFunction, MetaFunction } from 'remix'
+import {
+  redirect,
+  LinksFunction,
+  MetaFunction,
+  ActionFunction,
+  useActionData
+} from 'remix'
+import { Form } from 'remix'
 import { useMediaQuery } from 'react-responsive'
 import { useInView } from 'react-intersection-observer'
 import { Cloud, renderSimpleIcon, ICloud } from 'react-icon-cloud'
@@ -9,6 +16,7 @@ import particlesConfig from '~/particlesConfig'
 import portfolioBackImg from '../images/home/portfolioBackImg.jpeg'
 import MyFlipBook from '../components/MyFlipBook'
 import MyMap from '../components/MyMap'
+import { sendEmail } from '~/sendEmail'
 import {
   siJavascript,
   siTypescript,
@@ -32,6 +40,35 @@ import {
   siRedis,
   siMacos
 } from 'simple-icons/icons'
+
+type FormErrorType = {
+  name?: string
+  email?: string
+  subject?: string
+  message?: string
+}
+export const action: ActionFunction = async ({ request }) => {
+  const formData = await request.formData()
+
+  const name = formData.get('name')
+  const email = formData.get('email')
+  const subject = formData.get('subject')
+  const message = formData.get('message')
+
+  const errors: FormErrorType = {}
+  if (!name) errors.name = true
+  if (!email) errors.email = true
+  if (!subject) errors.subject = true
+  if (!message) errors.message = true
+
+  if (Object.keys(errors).length) {
+    return errors
+  }
+
+  await sendEmail({ name, email, subject, message })
+
+  return redirect('/')
+}
 
 export const links: LinksFunction = () => {
   return [
@@ -122,6 +159,7 @@ export default function IndexRoute () {
   const [isMobile, setIsMobile] = useState(isMobileVal)
   const [isTablet, setIsTablet] = useState(isTabletVal)
   const [isDesktop, setIsDesktop] = useState(isDesktopOrLaptop)
+  const errors = useActionData()
 
   useEffect(() => {
     setIsMobile(isMobileVal)
@@ -329,7 +367,37 @@ export default function IndexRoute () {
       >
         {/* <h1 className='header-subheading-text'>Contact Me</h1> */}
         <div className='contact-container'>
-          <div className="form-container">form here</div>
+          <div className='form-container'>
+            <Form reloadDocument={true} method='post'>
+              <p>
+                <label>
+                  Name: <input type='text' name='name' />
+                </label>
+                {errors?.name ? <em>Name is required</em> : null}
+              </p>
+              <p>
+                <label>
+                  Email: <input type='text' name='email' />
+                </label>
+                {errors?.email ? <em>Email is required</em> : null}
+              </p>
+              <p>
+                <label>
+                  Subject: <input type='text' name='subject' />
+                </label>
+                {errors?.subject ? <em>Subject is required</em> : null}
+              </p>
+              <p>
+                <label htmlFor='message'>Message:</label>
+                <br />
+                <textarea id='message' rows={20} name='message' />
+                {errors?.message ? <em>Message is required</em> : null}
+              </p>
+              <p>
+                <button type='submit'>Send Message</button>
+              </p>
+            </Form>
+          </div>
           <MyMap customOptions={customOptions} />
         </div>
       </section>
