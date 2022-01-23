@@ -8,6 +8,7 @@ import {
   useTransition,
   json
 } from 'remix'
+import { useNavigate } from 'react-router-dom'
 import { Form } from 'remix'
 import { useMediaQuery } from 'react-responsive'
 import { useInView } from 'react-intersection-observer'
@@ -48,6 +49,10 @@ type FormErrorType = {
   email?: boolean
   subject?: boolean
   message?: boolean
+}
+
+type KeyLogType = {
+  key?: boolean
 }
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData()
@@ -154,6 +159,7 @@ export default function IndexRoute () {
     siMacos
   ]
 
+  let navigate = useNavigate()
   const errors = useActionData()
   const transition = useTransition()
   const { state } = transition
@@ -170,6 +176,29 @@ export default function IndexRoute () {
   const [email, setEmail] = useState('')
   const [subject, setSubject] = useState('')
   const [message, setMessage] = useState('')
+
+  const keyLog: KeyLogType = {}
+
+  // command + s + u gets to secret login page
+  const handleKeyboard = ({ type, key, repeat, metaKey }) => {
+    if (repeat) return
+
+    if (type === 'keydown') {
+      keyLog[key] = true
+
+      if (keyLog.s && key === 'u') navigate('/adminloginz', { replace: true })
+    }
+
+    if (type === 'keyup') delete keyLog[key]
+  }
+
+  React.useEffect(() => {
+    const events = ['keydown', 'keyup']
+    events.forEach(name => document.addEventListener(name, handleKeyboard))
+
+    return () =>
+      events.forEach(name => document.removeEventListener(name, handleKeyboard))
+  })
 
   useEffect(() => {
     if (transition.state === 'submitting') {
