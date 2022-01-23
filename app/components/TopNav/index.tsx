@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'remix'
+import { NavLink } from 'remix'
 
 const TopNav = () => {
   const [open, setOpen] = useState(false)
@@ -15,6 +15,11 @@ const TopNav = () => {
       setOpen(!open)
       setShowOrHideText(open ? 'show' : 'hide')
     }
+  }
+
+  let activeStyle = {
+    textDecoration: 'underline',
+    textUnderlineOffset: '4px'
   }
 
   return (
@@ -73,49 +78,54 @@ const TopNav = () => {
             </button>
             <ul className='hamburgerMenu-list-container'>
               <li className='hamburgerMenu-list-item'>
-                <Link
+                <NavLink
                   onClick={handleOnClick}
                   className='hamburgerMenu-list-item-text'
                   to={'/'}
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
                 >
                   {'Home'}
-                </Link>
+                </NavLink>
               </li>
               <li className='hamburgerMenu-list-item'>
-                <Link
+                <NavLink
                   onClick={handleOnClick}
                   className='hamburgerMenu-list-item-text'
                   to={'about'}
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
                 >
                   {'About'}
-                </Link>
+                </NavLink>
               </li>
               <li className='hamburgerMenu-list-item'>
-                <Link
+                <NavLink
                   onClick={handleOnClick}
                   className='hamburgerMenu-list-item-text'
                   to={'skills'}
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
                 >
                   {'Skills'}
-                </Link>
+                </NavLink>
               </li>
               <li className='hamburgerMenu-list-item'>
-                <Link
+                <NavLink
                   onClick={handleOnClick}
                   className='hamburgerMenu-list-item-text'
                   to={'blogs'}
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
                 >
                   {'Blogs'}
-                </Link>
+                </NavLink>
               </li>
               <li className='hamburgerMenu-list-item'>
-                <Link
+                <NavLink
                   onClick={handleOnClick}
                   className='hamburgerMenu-list-item-text'
                   to={'contact'}
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
                 >
                   {'Contact'}
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -126,29 +136,49 @@ const TopNav = () => {
       <nav className='header-nav-hide' data-primary-nav>
         <ul data-primary-list>
           <li data-primary-list-item>
-            <Link data-primary-nav-text to={'/'}>
+            <NavLink
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              data-primary-nav-text
+              to={'/'}
+            >
               {'Home'}
-            </Link>
+            </NavLink>
           </li>
           <li data-primary-list-item>
-            <Link data-primary-nav-text to={'about'}>
+            <NavLink
+              data-primary-nav-text
+              to={'about'}
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            >
               {'About'}
-            </Link>
+            </NavLink>
           </li>
           <li data-primary-list-item>
-            <Link data-primary-nav-text to={'skills'}>
+            <NavLink
+              data-primary-nav-text
+              to={'skills'}
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            >
               {'Skills'}
-            </Link>
+            </NavLink>
           </li>
           <li data-primary-list-item>
-            <Link data-primary-nav-text to={'blogs'}>
+            <NavLink
+              data-primary-nav-text
+              to={'blogs'}
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            >
               {'Blogs'}
-            </Link>
+            </NavLink>
           </li>
           <li data-primary-list-item>
-            <Link data-primary-nav-text to={'contact'}>
+            <NavLink
+              data-primary-nav-text
+              to={'contact'}
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            >
               {'Contact'}
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </nav>

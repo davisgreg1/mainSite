@@ -21,39 +21,39 @@ oauth2Client.setCredentials({
 const accessToken = oauth2Client.getAccessToken()
 
 export async function sendEmail (data) {
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      type: 'OAuth2',
-      user: GMAIL_EMAIL,
-      clientId: GMAIL_CLIENT_ID,
-      clientSecret: GMAIL_CLIENT_SECRET,
-      refreshToken: GMAIL_REFRESH_TOKEN,
-      accessToken: accessToken
-    }
-  })
+  // const transporter = nodemailer.createTransport({
+  //   service: 'gmail',
+  //   auth: {
+  //     type: 'OAuth2',
+  //     user: GMAIL_EMAIL,
+  //     clientId: GMAIL_CLIENT_ID,
+  //     clientSecret: GMAIL_CLIENT_SECRET,
+  //     refreshToken: GMAIL_REFRESH_TOKEN,
+  //     accessToken: accessToken
+  //   }
+  // })
 
-  transporter.verify((err, success) => {
-    err
-      ? console.log(err)
-      : console.log(`=== Server is ready to take messages: ${success} ===`)
-  })
+  // transporter.verify((err, success) => {
+  //   err
+  //     ? console.log(err)
+  //     : console.log(`=== Server is ready to take messages: ${success} ===`)
+  // })
 
-  let mailOptions = {
-    from: data?.email,
-    to: GMAIL_EMAIL,
-    subject: data?.subject,
-    text: `${data?.message} \n\n from: ${data?.email}`
-  }
+  // let mailOptions = {
+  //   from: data?.email,
+  //   to: GMAIL_EMAIL,
+  //   subject: data?.subject,
+  //   text: `${data?.message} \n\n from: ${data?.email}`
+  // }
 
-  transporter.sendMail(mailOptions, function (err, info) {
-    if (err) {
-      console.log('Error Sending Email:', err)
-    } else {
-      console.log('email info:', info)
-    }
-    transporter.close()
-  })
+  // transporter.sendMail(mailOptions, function (err, info) {
+  //   if (err) {
+  //     console.log('Error Sending Email:', err)
+  //   } else {
+  //     console.log('email info:', info)
+  //   }
+  //   transporter.close()
+  // })
 
   return data
 }

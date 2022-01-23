@@ -4,7 +4,9 @@ import {
   LinksFunction,
   MetaFunction,
   ActionFunction,
-  useActionData
+  useActionData,
+  useTransition,
+  json
 } from 'remix'
 import { Form } from 'remix'
 import { useMediaQuery } from 'react-responsive'
@@ -42,10 +44,10 @@ import {
 } from 'simple-icons/icons'
 
 type FormErrorType = {
-  name?: string
-  email?: string
-  subject?: string
-  message?: string
+  name?: boolean
+  email?: boolean
+  subject?: boolean
+  message?: boolean
 }
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData()
@@ -62,7 +64,7 @@ export const action: ActionFunction = async ({ request }) => {
   if (!message) errors.message = true
 
   if (Object.keys(errors).length) {
-    return errors
+    return json(errors, { status: 422 })
   }
 
   await sendEmail({ name, email, subject, message })
@@ -151,6 +153,8 @@ export default function IndexRoute () {
     siRedis,
     siMacos
   ]
+
+  const transition = useTransition()
 
   const isDesktopOrLaptop = useMediaQuery({ minWidth: 1241 })
   const isTabletVal = useMediaQuery({ minWidth: 720, maxWidth: 1240 })
@@ -368,7 +372,7 @@ export default function IndexRoute () {
         {/* <h1 className='header-subheading-text'>Contact Me</h1> */}
         <div className='contact-container'>
           <div className='form-container'>
-            <Form reloadDocument={true} method='post'>
+            <Form method='post'>
               <p>
                 <label>
                   Name: <input type='text' name='name' />
