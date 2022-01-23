@@ -314,7 +314,10 @@ export default function IndexRoute () {
 
   return (
     <div className='container'>
-      <section id='section-home' className='section-content section'>
+      <section
+        id='section-home'
+        className='section-content section section-child'
+      >
         <div className='heading-subtexts-container'>
           <h1 className='heading-h1-container'>
             <p className='heading-text'>Hi,</p>
@@ -372,12 +375,17 @@ export default function IndexRoute () {
       <section
         ref={ref}
         style={isMobile ? { display: 'flex' } : portfolioBackImgStyle}
+        className='section-child'
         id='section-portfolio'
       >
+        <div className='section-big-word'>WORK</div>
         <MyFlipBook inView={inView} />
       </section>
-      <section id='section-skills'>
-        <h1 className='header-subheading-text'>Skills</h1>
+      <section className='section-child' id='section-skills'>
+        <div className='section-big-word section-bigWord-zIndex'>Skills</div>
+        <div className='mobile-slides-container'>
+          <p className='section-main-heading'>Skills</p>
+        </div>
         <Cloud containerProps={props.containerProps} options={props.options}>
           {cloudIcons}
         </Cloud>
@@ -422,12 +430,13 @@ export default function IndexRoute () {
       </section>
       <section
         id='section-contactMe'
-        className='section-content section'
+        className='section-content section section-child '
         style={portfolioBackImgStyle}
       >
+        <div className='section-big-word-contact'>Contact</div>
         <div className='contact-container'>
           <div className='form-container'>
-            <Form method='post' className="form-element">
+            <Form method='post' className='form-element'>
               <div className='contact-div'>
                 <div className='title'>Contact me</div>
                 <div className='fields'>

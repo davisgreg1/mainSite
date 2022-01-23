@@ -17,8 +17,8 @@ const MySlides = (props: MySlideProps) => {
   }
 
   return (
-    <div>
-      <p className='portfolio-heading'>Portfolio</p>
+    <div className='mobile-slides-container'>
+      <p className='section-main-heading'>WORK</p>
       <Slider {...settings}>{slides.map(slide => slide)}</Slider>
     </div>
   )
