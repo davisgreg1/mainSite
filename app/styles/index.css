@@ -68,6 +68,8 @@ body {
   }
 }
 
+
+
 .headings-pipe {
   padding: 0 4px;
   font-size: 24px;
@@ -226,6 +228,96 @@ body {
   justify-content: center;
 }
 
+.contact-div {
+  width: 100%;
+  height: auto;
+  padding: 60px 35px 35px 35px;
+  border-radius: 40px;
+  background: #ecf0f3;
+  box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
+  margin: 24px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 500px) {
+  .form-element {
+    display: flex;
+  }
+}
+
+.title {
+  text-align: center;
+  font-size: 28px;
+  padding-top: 24px;
+  letter-spacing: 0.5px;
+  color: #9b9696;
+}
+
+.fields {
+  width: 100%;
+  padding: 75px 5px 5px 5px;
+}
+.fields input,
+textarea {
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 18px;
+  color: #555;
+  padding: 20px 10px 20px 5px;
+  width: 100%;
+}
+.form-name,
+.form-email,
+.form-message,
+.form-subject {
+  margin-bottom: 30px;
+  border-radius: 25px;
+  box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #ffffff;
+  overflow: hidden;
+}
+
+.send-msg-btn {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  height: 60px;
+  border-radius: 30px;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "Lato", sans-serif;
+  color: #fff;
+  text-align: center;
+  /* background: #24cfaa; */
+  box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
+  transition: 0.5s;
+  background: linear-gradient(#9b9696, #4f4f52);
+}
+.send-msg-btn:active {
+  background: linear-gradient(#4f4f52, #9b9696);
+}
+
+.send-msg-btn-disabled {
+  cursor: not-allowed;
+  outline: none;
+  border: none;
+  width: 100%;
+  height: 60px;
+  border-radius: 30px;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "Lato", sans-serif;
+  color: #fff;
+  text-align: center;
+  box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
+  transition: 0.5s;
+  background: linear-gradient(#4f4f52, #9b9696);
+}
+
 .footer-container {
   margin-bottom: 16px;
 }
@@ -233,5 +325,8 @@ body {
 @media screen and (max-width: 900px) {
   .contact-container {
     flex-direction: column;
+  }
+  .contact-div {
+    box-shadow: 13px 13px 20px #cbced1, -13px 12px 20px #ffffff;
   }
 }

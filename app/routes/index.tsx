@@ -154,7 +154,9 @@ export default function IndexRoute () {
     siMacos
   ]
 
+  const errors = useActionData()
   const transition = useTransition()
+  const { state } = transition
 
   const isDesktopOrLaptop = useMediaQuery({ minWidth: 1241 })
   const isTabletVal = useMediaQuery({ minWidth: 720, maxWidth: 1240 })
@@ -163,7 +165,17 @@ export default function IndexRoute () {
   const [isMobile, setIsMobile] = useState(isMobileVal)
   const [isTablet, setIsTablet] = useState(isTabletVal)
   const [isDesktop, setIsDesktop] = useState(isDesktopOrLaptop)
-  const errors = useActionData()
+  const [isDisabled, setIsDisabled] = useState(true)
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [subject, setSubject] = useState('')
+  const [message, setMessage] = useState('')
+
+  useEffect(() => {
+    if (transition.state === 'submitting') {
+      clearForm()
+    }
+  }, [transition])
 
   useEffect(() => {
     setIsMobile(isMobileVal)
@@ -171,14 +183,29 @@ export default function IndexRoute () {
     setIsDesktop(isDesktopOrLaptop)
   })
 
+  useEffect(() => {
+    if (name && email && subject && message) {
+      setIsDisabled(false)
+    } else {
+      setIsDisabled(true)
+    }
+  }, [name, email, subject, message])
+
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 1
   })
 
+  const clearForm = () => {
+    setName('')
+    setEmail('')
+    setSubject('')
+    setMessage('')
+  }
+
   const portfolioBackImgStyle = {
     // backgroundImage: `url(${portfolioBackImg})`,
-    backgroundColor: 'rgba(255,255,255, 0.5)',
+    backgroundColor: '#ecf0f3',
     backgroundSize: 'contain',
     backgroundRepeat: 'round',
     display: 'flex'
@@ -255,6 +282,35 @@ export default function IndexRoute () {
     zoomControl: false,
     fullscreenControl: false
   }
+  const handleOnInputChange = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>,
+    inputName: string
+  ) => {
+    const value = e.target.value
+    if (inputName === 'name') {
+      setName(value)
+    }
+    if (inputName === 'email') {
+      setEmail(value)
+    }
+    if (inputName === 'subject') {
+      setSubject(value)
+    }
+    if (inputName === 'message') {
+      setMessage(value)
+    }
+  }
+
+  const text =
+    !email || !subject || !message || !name
+      ? 'Complete the form'
+      : transition.state === 'submitting'
+      ? 'Sending...'
+      : transition.state === 'loading'
+      ? 'Thank you!'
+      : 'Send message'
 
   return (
     <div className='container'>
@@ -369,37 +425,64 @@ export default function IndexRoute () {
         className='section-content section'
         style={portfolioBackImgStyle}
       >
-        {/* <h1 className='header-subheading-text'>Contact Me</h1> */}
         <div className='contact-container'>
           <div className='form-container'>
-            <Form method='post'>
-              <p>
-                <label>
-                  Name: <input type='text' name='name' />
-                </label>
-                {errors?.name ? <em>Name is required</em> : null}
-              </p>
-              <p>
-                <label>
-                  Email: <input type='text' name='email' />
-                </label>
-                {errors?.email ? <em>Email is required</em> : null}
-              </p>
-              <p>
-                <label>
-                  Subject: <input type='text' name='subject' />
-                </label>
-                {errors?.subject ? <em>Subject is required</em> : null}
-              </p>
-              <p>
-                <label htmlFor='message'>Message:</label>
-                <br />
-                <textarea id='message' rows={20} name='message' />
-                {errors?.message ? <em>Message is required</em> : null}
-              </p>
-              <p>
-                <button type='submit'>Send Message</button>
-              </p>
+            <Form method='post' className="form-element">
+              <div className='contact-div'>
+                <div className='title'>Contact me</div>
+                <div className='fields'>
+                  <div className='form-name'>
+                    <input
+                      type='username'
+                      className='user-input'
+                      name='name'
+                      value={name}
+                      placeholder={name ? name : 'Name'}
+                      onChange={e => handleOnInputChange(e, 'name')}
+                    />
+                  </div>
+                  <div className='form-email'>
+                    <input
+                      type='email'
+                      name='email'
+                      className='user-input'
+                      value={email}
+                      placeholder={email ? email : 'Email'}
+                      onChange={e => handleOnInputChange(e, 'email')}
+                    />
+                  </div>
+                  <div className='form-subject'>
+                    <input
+                      type='username'
+                      name='subject'
+                      className='user-input'
+                      value={subject}
+                      placeholder={subject ? subject : 'Subject'}
+                      onChange={e => handleOnInputChange(e, 'subject')}
+                    />
+                  </div>
+                  <div className='form-message'>
+                    <textarea
+                      id='message'
+                      className='user-input'
+                      name='message'
+                      rows={3}
+                      value={message}
+                      placeholder={message ? message : 'Email body'}
+                      onChange={e => handleOnInputChange(e, 'message')}
+                    />
+                  </div>
+                </div>
+                <button
+                  className={
+                    isDisabled ? 'send-msg-btn-disabled' : 'send-msg-btn'
+                  }
+                  disabled={isDisabled}
+                  type='submit'
+                >
+                  <span>{text}</span>
+                </button>
+              </div>
             </Form>
           </div>
           <MyMap customOptions={customOptions} />
