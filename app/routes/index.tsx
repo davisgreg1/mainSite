@@ -317,7 +317,7 @@ export default function IndexRoute () {
         <MyFlipBook inView={inView} />
       </section>
       <section id='section-skills'>
-        <h1 className='header-subheading-text'>ToolBox</h1>
+        <h1 className='header-subheading-text'>Skills</h1>
         <Cloud containerProps={props.containerProps} options={props.options}>
           {cloudIcons}
         </Cloud>
@@ -401,6 +401,13 @@ export default function IndexRoute () {
           <MyMap customOptions={customOptions} />
         </div>
       </section>
+      <footer>
+        <div className='footer-container'>
+          <div className='footer-content'>
+            Made with <span>❤️</span> in New York
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
