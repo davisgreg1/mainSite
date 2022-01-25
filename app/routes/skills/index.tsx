@@ -1,5 +1,38 @@
 import { LinksFunction, MetaFunction } from 'remix'
+import CloudTagComp from '~/components/CloudTagComp'
+
+import {
+  siJavascript,
+  siTypescript,
+  siNextdotjs,
+  siNodedotjs,
+  siCss3,
+  siHtml5,
+  siReact,
+  siGit,
+  siExpress,
+  siPostgresql,
+  siAmazonaws,
+  siJest,
+  siVisualstudiocode,
+  siSequelize,
+  siJson,
+  siTrello,
+  siJquery,
+  siNpm,
+  siJira,
+  siRedis,
+  siMacos
+} from 'simple-icons/icons'
 import styles from '~/styles/skills.css'
+
+// https://remix.run/api/conventions#meta
+export let meta: MetaFunction = () => {
+  return {
+    title: `Skills - Greg | FullStack Developer`,
+    description: `Greg's Skills`
+  }
+}
 
 export const links: LinksFunction = () => {
   return [
@@ -10,24 +43,37 @@ export const links: LinksFunction = () => {
   ]
 }
 
-// https://remix.run/api/conventions#meta
-export let meta: MetaFunction = () => {
-  return {
-    title: `Skills - Greg | FullStack Developer`,
-    description: `Greg's Skills`
-  }
-}
+const Skills = () => {
+  const icons = [
+    siJavascript,
+    siTypescript,
+    siNextdotjs,
+    siNodedotjs,
+    siCss3,
+    siHtml5,
+    siReact,
+    siGit,
+    siExpress,
+    siPostgresql,
+    siAmazonaws,
+    siJest,
+    siVisualstudiocode,
+    siSequelize,
+    siJson,
+    siTrello,
+    siJquery,
+    siNpm,
+    siJira,
+    siRedis,
+    siMacos
+  ]
 
-export default function Skills () {
   return (
     <div className='container'>
-      <div className='content'>
-        <div className='underConstructionMsgContainer'>
-          <h1 className='glow'>
-            <p>Skills</p>
-          </h1>
-        </div>
+      <div className='content' id='cloud-container'>
+        <CloudTagComp icons={icons} />
       </div>
     </div>
   )
 }
+export default Skills

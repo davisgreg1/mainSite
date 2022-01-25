@@ -12,13 +12,12 @@ import {
 import { useNavigate } from 'react-router-dom'
 import { useMediaQuery } from 'react-responsive'
 import { useInView } from 'react-intersection-observer'
-import { Cloud, renderSimpleIcon, ICloud } from 'react-icon-cloud'
 import styles from '~/styles/index.css'
 import Particles from 'react-tsparticles'
 import particlesConfig from '~/particlesConfig'
-import portfolioBackImg from '../images/home/portfolioBackImg.jpeg'
 import MyFlipBook from '../components/MyFlipBook'
 import MyMap from '../components/MyMap'
+import CloudTagComp from '../components/CloudTagComp'
 import { sendEmail } from '~/sendEmail'
 import {
   siJavascript,
@@ -83,44 +82,6 @@ export const links: LinksFunction = () => {
       rel: 'stylesheet',
       href: styles
     },
-    {
-      rel: 'stylesheet',
-      type: 'text/css',
-      charSet: 'UTF-8',
-      href:
-        'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css'
-    },
-    {
-      rel: 'stylesheet',
-      type: 'text/css',
-      href:
-        'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css'
-    },
-    {
-      rel: 'preload',
-      href:
-        'https://drive.google.com/uc?export=view&id=1i9NVQ9SOEFbzVsIo0u51qcZcVTwFPCHX',
-      as: 'image'
-    },
-    {
-      rel: 'preload',
-      href:
-        'https://drive.google.com/uc?export=view&id=1mF-p0RvL9B0k-DDdFgPmWduSCfCk_MOb',
-      as: 'image'
-    },
-    {
-      rel: 'preload',
-      href:
-        'https://www.moneycaptainlabs.com/wp-content/uploads/2021/02/logo-b.png',
-      as: 'image'
-    },
-    { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-    { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true },
-    {
-      rel: 'stylesheet',
-      href:
-        'https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap'
-    }
   ]
 }
 
@@ -140,7 +101,7 @@ export function loader () {
     }
   }
 }
-
+export const unstable_shouldReload = () => false;
 export default function IndexRoute () {
   const icons = [
     siJavascript,
@@ -239,72 +200,11 @@ export default function IndexRoute () {
   }
 
   const portfolioBackImgStyle = {
-    // backgroundImage: `url(${portfolioBackImg})`,
     backgroundColor: '#ecf0f3',
     backgroundSize: 'contain',
     backgroundRepeat: 'round',
     display: 'flex'
   }
-
-  const makeProps = (): Partial<ICloud> & { root: React.CSSProperties } => ({
-    root: {
-      top: 0,
-      left: 0,
-      right: 0,
-      height: '200vh',
-      position: 'absolute'
-    },
-    containerProps: {
-      style: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-        paddingTop: 40,
-        backgroundImage:
-          'radial-gradient( circle, rgb(11, 34, 238) 0%, rgb(15, 120, 181) 100%, rgb(17, 216, 251) 50% )',
-        borderRadius: '777px'
-      }
-    },
-    // https://www.goat1000.com/tagcanvas-options.php
-    options: {
-      clickToFront: 250,
-      depth: 1,
-      imageScale: 2,
-      initial: [0.1, -0.1],
-      outlineColour: '#0000',
-      reverse: false,
-      tooltip: isDesktopOrLaptop ? 'div' : 'native',
-      tooltipDelay: 0,
-      wheelZoom: false,
-      shuffleTags: true,
-      radiusX: 0.7,
-      radiusY: 0.7,
-      radiusZ: 0.7,
-      maxSpeed: 0.06,
-      tooltipClass: 'icon-title'
-    }
-  })
-
-  const makeIcons = () =>
-    icons.map(icon => {
-      return renderSimpleIcon({
-        icon,
-        minContrastRatio: 3,
-        bgHex: '#fff',
-        size: 42,
-        fallbackHex: '#fff',
-        aProps: {
-          href: undefined,
-          target: undefined,
-          rel: undefined,
-          onClick: (e: any) => e.preventDefault()
-        }
-      })
-    })
-
-  const props = makeProps()
-  const cloudIcons = makeIcons()
 
   const customOptions = {
     mapTypeControl: false,
@@ -421,9 +321,7 @@ export default function IndexRoute () {
         <div className='mobile-slides-container'>
           <p className='section-main-heading'>Skills</p>
         </div>
-        <Cloud containerProps={props.containerProps} options={props.options}>
-          {cloudIcons}
-        </Cloud>
+        <CloudTagComp icons={icons} />
         <div className='scroll-down scroll-down-skills scroll-down-left'>
           <span>Made it</span>
           <svg
