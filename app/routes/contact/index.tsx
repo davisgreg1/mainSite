@@ -39,6 +39,8 @@ export function loader () {
   }
 }
 
+export const unstable_shouldReload = () => false;
+
 type FormErrorType = {
   name?: boolean
   email?: boolean

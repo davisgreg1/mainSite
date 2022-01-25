@@ -6,7 +6,6 @@
 
 [data-primary-list-item] {
   margin: 0 12px;
-  color: white;
 }
 
 [data-primary-nav] {
@@ -15,7 +14,7 @@
 
 [data-primary-nav-text] {
   font-size: 24px;
-  color: white;
+  color: black;
   text-decoration: none;
 }
 
@@ -66,7 +65,7 @@
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: rgb(236, 240, 243);
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;

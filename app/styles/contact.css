@@ -3,8 +3,14 @@ body {
 }
 
 [data-primary-list] {
-  background: linear-gradient(#4f4f52 80%, #9b9696);
-  padding-bottom: 8px;
+  color: black;
+}
+
+[data-primary-nav-text] {
+  font-size: 24px;
+  color: black;
+  font-weight: bolder;
+  text-decoration: none;
 }
 
 .title {
