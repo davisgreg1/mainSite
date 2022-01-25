@@ -8,12 +8,26 @@ body,
 html {
   margin: 0;
   line-height: 1.5;
-  font-family: "Open Sans", sans-serif;
   overflow-y: scroll;
   overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
 }
 
-input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, textarea:-webkit-autofill, textarea:-webkit-autofill:hover, textarea:-webkit-autofill:focus, select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus {
+::placeholder,
+.user-input {
+  font-family: "Poppins", sans-serif;
+  color: #555;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
   border: 0;
   -webkit-text-fill-color: #8d8d8d;
   -webkit-box-shadow: 0 0 0px 1000px transparent inset;
@@ -47,8 +61,7 @@ ul {
 } */
 
 .front-cover {
-  background-image: 
-  url("https://drive.google.com/uc?export=view&id=1i9NVQ9SOEFbzVsIo0u51qcZcVTwFPCHX") !important;
+  background-image: url("https://drive.google.com/uc?export=view&id=1i9NVQ9SOEFbzVsIo0u51qcZcVTwFPCHX") !important;
   background-color: rgb(22, 150, 224);
   background-size: "contain";
   background-repeat: round;
@@ -339,4 +352,9 @@ ul {
   100% {
     background-position: top right;
   }
+}
+
+.defaultMapImg {
+  width: 100%;
+  height: 100vh;
 }
