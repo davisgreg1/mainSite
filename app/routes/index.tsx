@@ -6,10 +6,10 @@ import {
   ActionFunction,
   useActionData,
   useTransition,
-  json
+  json,
+  Form
 } from 'remix'
 import { useNavigate } from 'react-router-dom'
-import { Form } from 'remix'
 import { useMediaQuery } from 'react-responsive'
 import { useInView } from 'react-intersection-observer'
 import { Cloud, renderSimpleIcon, ICloud } from 'react-icon-cloud'
@@ -113,6 +113,13 @@ export const links: LinksFunction = () => {
       href:
         'https://www.moneycaptainlabs.com/wp-content/uploads/2021/02/logo-b.png',
       as: 'image'
+    },
+    { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+    { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true },
+    {
+      rel: 'stylesheet',
+      href:
+        'https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap'
     }
   ]
 }
@@ -179,7 +186,6 @@ export default function IndexRoute () {
 
   const keyLog: KeyLogType = {}
 
-  // command + s + u gets to secret login page
   const handleKeyboard = ({ type, key, repeat, metaKey }) => {
     if (repeat) return
 

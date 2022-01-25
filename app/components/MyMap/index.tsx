@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api'
 import { useLoaderData } from 'remix'
+import gMap from '~/images/home/gMap.png'
 
 const containerStyle = {
   width: '100%',
@@ -64,20 +65,20 @@ const MyMap = (props: MyMapProps) => {
   }
 
   const modifiedCustomOptions = { ...customOptions, mapId: GOOGLE_MAP_ID }
+  const options = customOptions ? modifiedCustomOptions : mapOptions
+
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
-      options={modifiedCustomOptions || mapOptions}
+      options={options}
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
-      {/* Child components, such as markers, info windows, etc. */}
-      <></>
       <Marker animation={google.maps.Animation.DROP} position={center} />
     </GoogleMap>
   ) : (
-    <></>
+    <div className='defaultMapImg' aria-label='gregory location'></div>
   )
 }
 

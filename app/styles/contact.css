@@ -1,51 +1,147 @@
 body {
-    color: hsl(0, 0%, 100%);
-    background-image: radial-gradient(
-      circle,
-      rgba(153, 202, 20, 0.472) 0%,
-      rgba(170, 181, 15, 0.671) 100%,
-      rgba(201, 219, 121, 0.644) 50%
-    );
-  }
+  color: black;
+}
 
-  .container {
+[data-primary-list] {
+  background: linear-gradient(#4f4f52 80%, #9b9696);
+  padding-bottom: 8px;
+}
+
+.title {
+  text-align: center;
+  color: #555;
+  transition: 0.5s;
+  user-select: none;
+}
+
+.title:hover {
+  text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc,
+    0 5px 0 #ccc, 0 6px 0 #ccc, 0 7px 0 #ccc, 0 8px 0 #ccc, 0 9px 0 #ccc,
+    0 10px 0 #ccc, 0 11px 0 #ccc, 0 12px 0 #ccc, 0 20px 30px rgba(0, 0, 0, 0.5);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.content {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+}
+
+#section-contactMe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-div {
+  width: 100%;
+  height: auto;
+  padding: 60px 35px 35px 35px;
+  border-radius: 40px;
+  background: #ecf0f3;
+  box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
+  margin: 24px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 500px) {
+  .form-element {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
   }
-  
-  .content {
-    height: 100%;
-    color: red;
-    width: 100%;
-    /* display: flex; */
-    align-items: center;
-    justify-content: center;
+}
+
+.fields {
+  width: 100%;
+  padding: 75px 5px 5px 5px;
+}
+.fields input,
+textarea {
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 18px;
+  color: #555;
+  padding: 20px 10px 20px 5px;
+  width: 100%;
+}
+.form-name,
+.form-email,
+.form-message,
+.form-subject {
+  margin-bottom: 30px;
+  border-radius: 25px;
+  box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #ffffff;
+  overflow: hidden;
+}
+
+.send-msg-btn {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  height: 60px;
+  border-radius: 30px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  /* background: #24cfaa; */
+  box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
+  transition: 0.5s;
+  background: linear-gradient(#9b9696, #4f4f52);
+}
+.send-msg-btn:active {
+  background: linear-gradient(#4f4f52, #9b9696);
+}
+
+.send-msg-btn-disabled {
+  cursor: not-allowed;
+  outline: none;
+  border: none;
+  width: 100%;
+  height: 60px;
+  border-radius: 30px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
+  transition: 0.5s;
+  background: linear-gradient(#4f4f52, #9b9696);
+}
+
+@media screen and (max-width: 900px) {
+  .contact-container {
+    flex-direction: column;
   }
-  
-  .glow {
-    font-size: 35px;
-    color: #ffffff;
-    text-align: center;
-    animation-duration: 1s;
-      animation-timing-function: cubic-bezier(0, 0, 0.56, -0.41);
-      animation-delay: 0s;
-      animation-iteration-count: infinite;
-      animation-direction: alternate;
-      animation-fill-mode: none;
-      animation-play-state: running;
-      animation-name: glow;
+  .contact-div {
+    box-shadow: 13px 13px 20px #cbced1, -13px 12px 20px #ffffff;
   }
-  
-  @-webkit-keyframes glow {
-    from {
-      text-shadow: 0 0 10px #eeeeee, 0 0 20px #000000, 0 0 30px #000000,
-        0 0 40px #000000, 0 0 50px #9554b3, 0 0 60px #9554b3, 0 0 70px #9554b3;
-    }
-    to {
-      text-shadow: 0 0 20px #eeeeee, 0 0 30px #ff4da6, 0 0 40px #ff4da6,
-        0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
-    }
-  }
+}
