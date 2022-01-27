@@ -1,6 +1,5 @@
 import { LinksFunction, MetaFunction } from 'remix'
 import CloudTagComp from '~/components/CloudTagComp'
-
 import {
   siJavascript,
   siTypescript,
@@ -69,10 +68,8 @@ const Skills = () => {
   ]
 
   return (
-    <div className='container'>
-      <div className='content' id='cloud-container'>
-        <CloudTagComp icons={icons} />
-      </div>
+    <div className='content' id='cloud-container'>
+      <CloudTagComp ssrID={'skillsSSRCloud'} skillsRoute={true} />
     </div>
   )
 }
