@@ -102,6 +102,12 @@ ul {
   color: wheat;
 }
 
+.slick-next,
+.slick-prev {
+  background-color: black !important;
+  border-radius: 2rem;
+}
+
 .leftPage {
   box-shadow: var(--box-shadow-page);
   border-right: 0;
@@ -357,4 +363,21 @@ ul {
 .defaultMapImg {
   width: 100%;
   height: 100vh;
+}
+
+.skills-description,
+.cloudTagComp-container {
+  display: flex;
+}
+
+.cloudTagComp-container {
+  flex-direction: column;
+  align-items: center;
+}
+
+.skills-description {
+  width: 50%;
+  line-height: 2;
+  word-spacing: 8px;
+  text-align: center;
 }

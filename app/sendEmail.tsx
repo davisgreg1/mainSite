@@ -20,7 +20,7 @@ oauth2Client.setCredentials({
 
 const accessToken = oauth2Client.getAccessToken()
 
-export async function sendEmail (data) {
+export async function sendEmail (data:any) {
   
   const transporter = nodemailer.createTransport({
     service: 'gmail',

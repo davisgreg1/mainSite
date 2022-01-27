@@ -39,7 +39,7 @@ export const links: LinksFunction = () => {
       as: 'image'
     },
     { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-    { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true },
+    { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
     {
       rel: 'stylesheet',
       href:
