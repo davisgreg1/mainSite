@@ -155,7 +155,7 @@ const CloudTagComp = (props: any) => {
       initial: [0.1, -0.1],
       outlineColour: '#0000',
       reverse: false,
-      tooltip: isDesktopOrLaptop ? 'div' : 'native',
+      tooltip: (isDesktopOrLaptop && !skillsRoute) ? 'div' : 'native',
       tooltipDelay: 0,
       wheelZoom: false,
       radiusX: 0.7,
