@@ -11,6 +11,7 @@ import {
 } from 'remix'
 import { sendEmail } from '~/sendEmail'
 import MyMap from '~/components/MyMap'
+import SocialFooter from "~/components/SocialFooter";
 import styles from '~/styles/contact.css'
 
 export const links: LinksFunction = () => {
@@ -39,7 +40,7 @@ export function loader () {
   }
 }
 
-export const unstable_shouldReload = () => false;
+export const unstable_shouldReload = () => false
 
 type FormErrorType = {
   name?: boolean
@@ -71,7 +72,7 @@ export const action: ActionFunction = async ({ request }) => {
   return redirect('/contact')
 }
 
-export default function Contact () {
+const Contact = () => {
   const errors = useActionData()
   const transition = useTransition()
   const { state } = transition
@@ -150,6 +151,7 @@ export default function Contact () {
     fullscreenControl: false
   }
 
+
   return (
     <div className='container'>
       <div className='content'>
@@ -221,7 +223,12 @@ export default function Contact () {
             <MyMap customOptions={customOptions} />
           </div>
         </section>
+        <footer className='contact-footer-container'>
+          <SocialFooter />
+        </footer>
       </div>
     </div>
   )
 }
+
+export default Contact
