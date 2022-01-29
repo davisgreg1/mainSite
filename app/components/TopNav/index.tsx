@@ -107,7 +107,7 @@ const TopNav = () => {
                   {'Skills'}
                 </NavLink>
               </li>
-              <li className='hamburgerMenu-list-item'>
+              {/* <li className='hamburgerMenu-list-item'>
                 <NavLink
                   onClick={handleOnClick}
                   className='hamburgerMenu-list-item-text'
@@ -116,7 +116,7 @@ const TopNav = () => {
                 >
                   {'Blogs'}
                 </NavLink>
-              </li>
+              </li> */}
               <li className='hamburgerMenu-list-item'>
                 <NavLink
                   onClick={handleOnClick}
@@ -162,7 +162,7 @@ const TopNav = () => {
               {'Skills'}
             </NavLink>
           </li>
-          <li data-primary-list-item>
+          {/* <li data-primary-list-item>
             <NavLink
               data-primary-nav-text
               to={'blogs'}
@@ -170,7 +170,7 @@ const TopNav = () => {
             >
               {'Blogs'}
             </NavLink>
-          </li>
+          </li> */}
           <li data-primary-list-item>
             <NavLink
               data-primary-nav-text
