@@ -1,0 +1,107 @@
+{
+  "version": "38532307",
+  "entry": {
+    "module": "/build/entry.client-F4IKADCJ.js",
+    "imports": [
+      "/build/_shared/chunk-OQ4VQ54M.js",
+      "/build/_shared/chunk-KODBUEGT.js",
+      "/build/_shared/chunk-E7VMOUYL.js"
+    ]
+  },
+  "routes": {
+    "root": {
+      "id": "root",
+      "path": "",
+      "module": "/build/root-LNG7TW6N.js",
+      "hasAction": false,
+      "hasLoader": false,
+      "hasCatchBoundary": true,
+      "hasErrorBoundary": true
+    },
+    "routes/about/index": {
+      "id": "routes/about/index",
+      "parentId": "root",
+      "path": "about",
+      "index": true,
+      "module": "/build/routes/about/index-BP3MW4AI.js",
+      "hasAction": false,
+      "hasLoader": false,
+      "hasCatchBoundary": false,
+      "hasErrorBoundary": false
+    },
+    "routes/adminLoginZ/index": {
+      "id": "routes/adminLoginZ/index",
+      "parentId": "root",
+      "path": "adminLoginZ",
+      "index": true,
+      "module": "/build/routes/adminLoginZ/index-FQ7VLDJZ.js",
+      "hasAction": false,
+      "hasLoader": false,
+      "hasCatchBoundary": false,
+      "hasErrorBoundary": false
+    },
+    "routes/blogs": {
+      "id": "routes/blogs",
+      "parentId": "root",
+      "path": "blogs",
+      "module": "/build/routes/blogs-HWV3LEFE.js",
+      "hasAction": false,
+      "hasLoader": false,
+      "hasCatchBoundary": false,
+      "hasErrorBoundary": false
+    },
+    "routes/blogs/index": {
+      "id": "routes/blogs/index",
+      "parentId": "routes/blogs",
+      "index": true,
+      "module": "/build/routes/blogs/index-3W6ODYDT.js",
+      "hasAction": false,
+      "hasLoader": false,
+      "hasCatchBoundary": false,
+      "hasErrorBoundary": false
+    },
+    "routes/contact/index": {
+      "id": "routes/contact/index",
+      "parentId": "root",
+      "path": "contact",
+      "index": true,
+      "module": "/build/routes/contact/index-HDXTLA3M.js",
+      "imports": [
+        "/build/_shared/chunk-ZXKJJEQO.js"
+      ],
+      "hasAction": true,
+      "hasLoader": true,
+      "hasCatchBoundary": false,
+      "hasErrorBoundary": false
+    },
+    "routes/index": {
+      "id": "routes/index",
+      "parentId": "root",
+      "index": true,
+      "module": "/build/routes/index-YQDFNNAI.js",
+      "imports": [
+        "/build/_shared/chunk-ZXKJJEQO.js",
+        "/build/_shared/chunk-NI4FVACT.js"
+      ],
+      "hasAction": true,
+      "hasLoader": true,
+      "hasCatchBoundary": false,
+      "hasErrorBoundary": false
+    },
+    "routes/skills/index": {
+      "id": "routes/skills/index",
+      "parentId": "root",
+      "path": "skills",
+      "index": true,
+      "module": "/build/routes/skills/index-X3HGRN2Q.js",
+      "imports": [
+        "/build/_shared/chunk-NI4FVACT.js"
+      ],
+      "hasAction": false,
+      "hasLoader": false,
+      "hasCatchBoundary": false,
+      "hasErrorBoundary": false
+    }
+  },
+  "url": "/build/manifest-38532307.js"
+}

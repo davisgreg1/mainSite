@@ -1,0 +1,51 @@
+body,
+html {
+  background-color: rgb(236, 240, 243);
+  height: 100%;
+}
+
+.container {
+  background-color: rgb(236, 240, 243);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Typist {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 24px;
+  padding: 16px 16px 0 16px;
+}
+
+[data-primary-nav] {
+  position: sticky;
+}
+
+.skill-bar-container,
+.skill-text-container {
+  display: flex;
+  width: 100vw;
+}
+
+.skill-bar-container > canvas {
+  padding: 16px;
+}
+
+@media only screen and (max-width: 1140px) {
+  .container {
+    height: 100vh;
+  }
+}
