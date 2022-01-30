@@ -94,7 +94,7 @@ export const links: LinksFunction = () => {
       type: 'text/css',
       href:
         'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css'
-    },
+    }
   ]
 }
 
@@ -114,7 +114,7 @@ export function loader () {
     }
   }
 }
-export const unstable_shouldReload = () => false;
+export const unstable_shouldReload = () => false
 export default function IndexRoute () {
   const icons = [
     siJavascript,
@@ -214,9 +214,13 @@ export default function IndexRoute () {
 
   const portfolioBackImgStyle = {
     backgroundColor: '#ecf0f3',
-    backgroundSize: 'contain',
-    backgroundRepeat: 'round',
-    display: 'flex'
+    display: 'flex',
+    height: '100vh'
+  }
+
+  const portfolioBackImgStyleContact = {
+    backgroundColor: '#ecf0f3',
+    display: 'flex',
   }
 
   const customOptions = {
@@ -326,11 +330,11 @@ export default function IndexRoute () {
         className='section-child'
         id='section-portfolio'
       >
-        <div className='section-big-word'>WORK</div>
+        <div className='section-big-word section-big-word-work'>WORK</div>
         <MyFlipBook inView={inView} />
       </section>
       <section className='section-child' id='section-skills'>
-        <div className='section-big-word section-bigWord-zIndex'>Skills</div>
+        <div className='section-big-word section-big-word-skills section-bigWord-zIndex'>Skills</div>
         <div className='mobile-slides-container'>
           <p className='section-main-heading'>Skills</p>
         </div>
@@ -377,9 +381,9 @@ export default function IndexRoute () {
       <section
         id='section-contactMe'
         className='section-content section section-child '
-        style={portfolioBackImgStyle}
+        style={portfolioBackImgStyleContact}
       >
-        <div className='section-big-word-contact'>Contact</div>
+        <div className='section-big-word-contact section-big-word-contact'>Contact</div>
         <div className='contact-container'>
           <div className='form-container'>
             <Form method='post' className='form-element'>

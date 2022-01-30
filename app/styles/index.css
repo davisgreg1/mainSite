@@ -1,5 +1,6 @@
 body {
-  color: rgb(31, 29, 29);
+  color: white;
+  /* color: rgb(31, 29, 29); */
   background-image: radial-gradient(
     circle,
     rgb(11, 34, 238) 0%,
@@ -218,13 +219,28 @@ body {
   position: relative;
   flex-direction: column;
   align-items: center;
-  height: auto;
+  height: 100vh;
   margin: auto;
 }
 
 .section {
   display: flex;
   justify-content: flex-start;
+}
+
+.section-big-word-contact,
+.section-big-word-skills,
+.section-big-word-work {
+  padding-left: 24px;
+}
+
+.section-big-word-skills {
+  color: white;
+}
+
+.section-big-word-work,
+.section-big-word-contact {
+  color: black;
 }
 
 .header-subheading-text {
@@ -295,7 +311,7 @@ body {
 }
 
 @media screen and (min-width: 720px) {
-  .section-main-heading{
+  .section-main-heading {
     display: none;
   }
 }
@@ -385,4 +401,3 @@ textarea {
 .footer-container {
   margin-bottom: 16px;
 }
-
