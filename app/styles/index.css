@@ -1,12 +1,19 @@
 body {
   color: white;
-  /* color: rgb(31, 29, 29); */
   background-image: radial-gradient(
     circle,
     rgb(11, 34, 238) 0%,
     rgb(15, 120, 181) 100%,
     rgb(17, 216, 251) 50%
   );
+}
+
+[data-primary-nav-text] {
+  color: white;
+}
+
+[data-primary-list] {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 #tsparticles {

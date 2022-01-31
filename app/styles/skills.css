@@ -8,6 +8,10 @@ body {
   );
 }
 
+[data-primary-nav-text] {
+  color: white;
+}
+
 .content {
   height: 100%;
   width: 100%;

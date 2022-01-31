@@ -220,7 +220,7 @@ export default function IndexRoute () {
 
   const portfolioBackImgStyleContact = {
     backgroundColor: '#ecf0f3',
-    display: 'flex',
+    display: 'flex'
   }
 
   const customOptions = {
@@ -325,7 +325,6 @@ export default function IndexRoute () {
         </div>
       </section>
       <section
-        ref={ref}
         style={isMobile ? { display: 'flex' } : portfolioBackImgStyle}
         className='section-child'
         id='section-portfolio'
@@ -334,7 +333,9 @@ export default function IndexRoute () {
         <MyFlipBook inView={inView} />
       </section>
       <section className='section-child' id='section-skills'>
-        <div className='section-big-word section-big-word-skills section-bigWord-zIndex'>Skills</div>
+        <div className='section-big-word section-big-word-skills section-bigWord-zIndex'>
+          Skills
+        </div>
         <div className='mobile-slides-container'>
           <p className='section-main-heading'>Skills</p>
         </div>
@@ -379,11 +380,14 @@ export default function IndexRoute () {
         </div>
       </section>
       <section
+        ref={ref}
         id='section-contactMe'
         className='section-content section section-child '
         style={portfolioBackImgStyleContact}
       >
-        <div className='section-big-word-contact section-big-word-contact'>Contact</div>
+        <div className='section-big-word-contact section-big-word-contact'>
+          Contact
+        </div>
         <div className='contact-container'>
           <div className='form-container'>
             <Form method='post' className='form-element'>
