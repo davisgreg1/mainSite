@@ -10,6 +10,7 @@
     "start": "remix-serve build"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.4.0",
     "@icons-pack/react-simple-icons": "^4.6.1",
     "@lottiefiles/lottie-player": "^1.5.4",
     "@react-google-maps/api": "^2.7.0",

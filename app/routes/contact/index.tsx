@@ -6,12 +6,13 @@ import {
   ActionFunction,
   useActionData,
   useTransition,
+  useLoaderData,
   json,
   Form
 } from 'remix'
-import { sendEmail } from '~/sendEmail'
 import MyMap from '~/components/MyMap'
-import SocialFooter from "~/components/SocialFooter";
+import sendEmail from '~/utils/sendEmail'
+import SocialFooter from '~/components/SocialFooter'
 import styles from '~/styles/contact.css'
 
 export const links: LinksFunction = () => {
@@ -35,7 +36,10 @@ export function loader () {
   return {
     ENV: {
       GOOGLE_MAP_ID: process.env.GOOGLE_MAP_ID,
-      GOOGLE_MAP_API_KEY: process.env.GOOGLE_MAP_API_KEY
+      GOOGLE_MAP_API_KEY: process.env.GOOGLE_MAP_API_KEY,
+      EMAIL_SERVICE_ID: process.env.EMAIL_SERVICE_ID,
+      EMAIL_TEMPLATE_ID: process.env.EMAIL_TEMPLATE_ID,
+      EMAIL_API_KEY: process.env.EMAIL_API_KEY
     }
   }
 }
@@ -67,14 +71,21 @@ export const action: ActionFunction = async ({ request }) => {
     return json(errors, { status: 422 })
   }
 
-  await sendEmail({ name, email, subject, message })
-
   return redirect('/contact')
 }
 
 const Contact = () => {
   const errors = useActionData()
   const transition = useTransition()
+  const loaderData = useLoaderData()
+  const {
+    ENV: { EMAIL_API_KEY, EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID }
+  } = loaderData
+  const options = {
+    EMAIL_SERVICE_ID,
+    EMAIL_TEMPLATE_ID,
+    EMAIL_API_KEY
+  }
   const { state } = transition
   const [isDisabled, setIsDisabled] = useState(true)
   const [name, setName] = useState('')
@@ -151,7 +162,6 @@ const Contact = () => {
     fullscreenControl: false
   }
 
-
   return (
     <div className='container'>
       <div className='content'>
@@ -162,7 +172,11 @@ const Contact = () => {
         >
           <div className='contact-container'>
             <div className='form-container'>
-              <Form method='post' className='form-element'>
+              <Form
+                method='post'
+                className='form-element'
+                onSubmit={() => sendEmail(options)}
+              >
                 <div className='contact-div'>
                   <div className='title'>Contact me</div>
                   <div className='fields'>

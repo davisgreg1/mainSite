@@ -6,6 +6,7 @@ import {
   ActionFunction,
   useActionData,
   useTransition,
+  useLoaderData,
   json,
   Form
 } from 'remix'
@@ -18,7 +19,7 @@ import particlesConfig from '~/particlesConfig'
 import MyFlipBook from '../components/MyFlipBook'
 import MyMap from '../components/MyMap'
 import CloudTagComp from '../components/CloudTagComp'
-import { sendEmail } from '~/sendEmail'
+import sendEmail from '~/utils/sendEmail'
 import {
   siJavascript,
   siTypescript,
@@ -71,8 +72,6 @@ export const action: ActionFunction = async ({ request }) => {
     return json(errors, { status: 422 })
   }
 
-  await sendEmail({ name, email, subject, message })
-
   return redirect('/')
 }
 
@@ -110,7 +109,10 @@ export function loader () {
   return {
     ENV: {
       GOOGLE_MAP_ID: process.env.GOOGLE_MAP_ID,
-      GOOGLE_MAP_API_KEY: process.env.GOOGLE_MAP_API_KEY
+      GOOGLE_MAP_API_KEY: process.env.GOOGLE_MAP_API_KEY,
+      EMAIL_SERVICE_ID: process.env.EMAIL_SERVICE_ID,
+      EMAIL_TEMPLATE_ID: process.env.EMAIL_TEMPLATE_ID,
+      EMAIL_API_KEY: process.env.EMAIL_API_KEY
     }
   }
 }
@@ -143,6 +145,15 @@ export default function IndexRoute () {
   let navigate = useNavigate()
   const errors = useActionData()
   const transition = useTransition()
+  const loaderData = useLoaderData()
+  const {
+    ENV: { EMAIL_API_KEY, EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID }
+  } = loaderData
+  const options = {
+    EMAIL_SERVICE_ID,
+    EMAIL_TEMPLATE_ID,
+    EMAIL_API_KEY
+  }
   const { state } = transition
 
   const isDesktopOrLaptop = useMediaQuery({ minWidth: 1241 })
@@ -390,7 +401,11 @@ export default function IndexRoute () {
         </div>
         <div className='contact-container'>
           <div className='form-container'>
-            <Form method='post' className='form-element'>
+            <Form
+              method='post'
+              className='form-element'
+              onSubmit={() => sendEmail(options)}
+            >
               <div className='contact-div'>
                 <div className='title'>Contact me</div>
                 <div className='fields'>
