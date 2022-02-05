@@ -32,15 +32,6 @@ export const links: LinksFunction = () => {
   ]
 }
 
-export function loader () {
-  return {
-    ENV: {
-      GOOGLE_MAP_ID: process.env.GOOGLE_MAP_ID,
-      GOOGLE_MAP_API_KEY: process.env.GOOGLE_MAP_API_KEY,
-    }
-  }
-}
-
 // https://remix.run/api/conventions#default-export
 // https://remix.run/api/conventions#route-filenames
 export default function App () {
