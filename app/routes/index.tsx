@@ -154,8 +154,7 @@ export default function IndexRoute () {
     EMAIL_TEMPLATE_ID,
     EMAIL_API_KEY
   }
-  const { state } = transition
-
+  const { state, type, location } = transition
   const isDesktopOrLaptop = useMediaQuery({ minWidth: 1241 })
   const isTabletVal = useMediaQuery({ minWidth: 720, maxWidth: 1240 })
   const isMobileVal = useMediaQuery({ maxWidth: 719 })
