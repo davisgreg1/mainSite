@@ -5,7 +5,6 @@ import { useMediaQuery } from 'react-responsive'
 import Page from '../Page'
 import PageCover from '../PageCover'
 import MySlides from '../MySlides'
-import * as LottiePlayer from "@lottiefiles/lottie-player";
 
 const MyFlipBook = (props: any) => {
   useEffect(() => {
@@ -29,6 +28,7 @@ const MyFlipBook = (props: any) => {
 
   const pageFlip = useRef<HTMLDivElement>(null)
   const lottieRef = useRef<HTMLDivElement>(null)
+  const secondLottieRef = useRef<HTMLDivElement>(null)
 
   // const shouldRenderFlipBook = true
   const shouldRenderFlipBook = isTablet || isDesktop
@@ -425,8 +425,8 @@ const MyFlipBook = (props: any) => {
               autoplay
               loop
               mode='normal'
-              id='firstLottie2'
-              // ref={lottieRef}
+              id='secondLottie'
+              ref={secondLottieRef}
               speed='1'
               src='https://assets1.lottiefiles.com/packages/lf20_ymyikn6l.json'
               style={{ width: '320px', height: '300px' }}
