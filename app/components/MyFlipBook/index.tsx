@@ -5,6 +5,7 @@ import { useMediaQuery } from 'react-responsive'
 import Page from '../Page'
 import PageCover from '../PageCover'
 import MySlides from '../MySlides'
+import * as LottiePlayer from "@lottiefiles/lottie-player";
 
 const MyFlipBook = (props: any) => {
   useEffect(() => {
@@ -424,8 +425,8 @@ const MyFlipBook = (props: any) => {
               autoplay
               loop
               mode='normal'
-              id='firstLottie'
-              ref={lottieRef}
+              id='firstLottie2'
+              // ref={lottieRef}
               speed='1'
               src='https://assets1.lottiefiles.com/packages/lf20_ymyikn6l.json'
               style={{ width: '320px', height: '300px' }}
@@ -436,7 +437,11 @@ const MyFlipBook = (props: any) => {
             <p>his story doesn't end here.</p>
           </p>
           <p>I'm available to consult about your prospective project/idea.</p>
-          <p className=''>Drop me a line!</p>
+          <p>
+          <NavLink className='contact-link-color shimmer font22' to={'contact'}>
+            Send me a message!
+          </NavLink>
+        </p>
         </div>
       </Page>
       <PageCover backCover={true} number={'7'}></PageCover>

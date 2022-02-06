@@ -238,6 +238,7 @@ body {
 .section-big-word-contact,
 .section-big-word-skills,
 .section-big-word-work {
+  width: -webkit-fill-available;
   padding-left: 24px;
 }
 
