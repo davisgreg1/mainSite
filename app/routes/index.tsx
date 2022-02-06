@@ -346,9 +346,7 @@ export default function IndexRoute () {
         <div className='section-big-word section-big-word-skills section-bigWord-zIndex'>
           Skills
         </div>
-        <div className='mobile-slides-container'>
           <p className='section-main-heading'>Skills</p>
-        </div>
         <CloudTagComp ssrID={'homeSSRCloud'} />
         <div className='scroll-down scroll-down-skills scroll-down-left'>
           <span>Made it</span>

@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react'
+import { NavLink } from 'remix'
 import HTMLFlipBook from 'react-pageflip'
 import { useMediaQuery } from 'react-responsive'
 import Page from '../Page'
@@ -48,7 +49,7 @@ const MyFlipBook = (props: any) => {
   const onPage = (e: any) => setPage(e.data)
 
   const slides = [
-    <Page isSlides={true} key="1" number={'1'}>
+    <Page isSlides={true} key='1' number={'1'}>
       <div className='data-container'>
         <div className='data-logo'>
           <img
@@ -74,7 +75,7 @@ const MyFlipBook = (props: any) => {
         </p>
       </div>
     </Page>,
-    <Page isSlides={true} key="2"  number={'2'}>
+    <Page isSlides={true} key='2' number={'2'}>
       <div className='data-container'>
         <div className='data-logo'>
           <svg
@@ -115,7 +116,7 @@ const MyFlipBook = (props: any) => {
         </p>
       </div>
     </Page>,
-    <Page isSlides={true} key="3"  number={'3'}>
+    <Page isSlides={true} key='3' number={'3'}>
       <div className='data-logo'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -163,7 +164,7 @@ const MyFlipBook = (props: any) => {
         6,767 stores!
       </p>
     </Page>,
-    <Page isSlides={true} key="4"  number={'4'}>
+    <Page isSlides={true} key='4' number={'4'}>
       <div className='data-container'>
         <div className='data-logo'>
           <img
@@ -192,7 +193,7 @@ const MyFlipBook = (props: any) => {
         <p>With our help, you can be the Captain of your Money Ship!</p>
       </div>
     </Page>,
-    <Page isSlides={true} key="5"  number={'5'}>
+    <Page isSlides={true} key='5' number={'5'}>
       <div className='data-container'>
         <div className='data-logo'>
           <lottie-player
@@ -211,7 +212,11 @@ const MyFlipBook = (props: any) => {
           <p>his story doesn't end here.</p>
         </p>
         <p>I'm available to consult about your prospective project/idea.</p>
-        <p className=''>Drop me a line!</p>
+        <p>
+          <NavLink className='contact-link-color shimmer' to={'contact'}>
+            Send me a message!
+          </NavLink>
+        </p>
       </div>
     </Page>
   ]

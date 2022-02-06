@@ -118,11 +118,18 @@ ul {
   border-left: 0;
 }
 
+.contact-link-color {
+  color: inherit;
+  display: flex;
+}
+
 @media screen and (max-width: 719px) {
   .rightPage,
-  .leftPage {
+  .leftPage,
+  .mobile-slides-container {
     background-color: black;
     margin: 24px;
+    border: solid 1px white;
   }
 }
 
