@@ -275,186 +275,173 @@ export default function IndexRoute () {
       : 'Send message'
 
   return (
-    <div className='container'>
+    <div className="container">
       <section
-        id='section-home'
-        className='section-content section section-child'
-      >
-        <div className='heading-subtexts-container'>
-          <h1 className='heading-h1-container'>
-            <p className='heading-text'>Hi,</p>
-            <p className='heading-text'>I'm Greg,</p>
-            <p className='heading-h1-lastItem heading-text'>Web Developer</p>
+        id="section-home"
+        className="section-content section section-child">
+        <div className="heading-subtexts-container">
+          <h1 className="heading-h1-container">
+            <p className="heading-text">Hi,</p>
+            <p className="heading-text">I'm Greg,</p>
+            <p className="heading-h1-lastItem heading-text">Web Developer</p>
           </h1>
-          <div className='headings-paragraph-container'>
-            <p className='headings-paragraph-item'>Software Engineer</p>
-            <span className='headings-pipe'>|</span>
-            <p className='headings-paragraph-item'>FullStack Developer</p>
-            <span className='headings-pipe'>|</span>
-            <p className='headings-paragraph-item'>Dad</p>
+          <div className="headings-paragraph-container">
+            <p className="headings-paragraph-item">Software Engineer</p>
+            <span className="headings-pipe">|</span>
+            <p className="headings-paragraph-item">FullStack Developer</p>
+            <span className="headings-pipe">|</span>
+            <p className="headings-paragraph-item">Dad</p>
           </div>
         </div>
-        <Particles id='tsparticles' options={particlesConfig} />
-        <div className='scroll-down scroll-down-left'>
+        <Particles id="tsparticles" options={particlesConfig} />
+        <div className="scroll-down scroll-down-left">
           <span>scroll down</span>
           <svg
-            aria-hidden='true'
-            focusable='false'
-            data-prefix='fal'
-            data-icon='arrow-down'
-            role='img'
-            xmlns='http://www.w3.org/2000/svg'
-            viewBox='0 0 448 512'
-            className='svg-inline--fa fa-arrow-down fa-w-14 fa-5x'
-          >
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fal"
+            data-icon="arrow-down"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+            className="svg-inline--fa fa-arrow-down fa-w-14 fa-5x">
             <path
-              fill='currentColor'
-              d='M443.5 248.5l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L241 419.9V44c0-6.6-5.4-12-12-12h-10c-6.6 0-12 5.4-12 12v375.9L28.5 241.4c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.8 4.8-12.3.1-17z'
-              className=''
-            ></path>
+              fill="currentColor"
+              d="M443.5 248.5l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L241 419.9V44c0-6.6-5.4-12-12-12h-10c-6.6 0-12 5.4-12 12v375.9L28.5 241.4c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.8 4.8-12.3.1-17z"
+              className=""></path>
           </svg>
         </div>
-        <div className='scroll-down'>
+        <div className="scroll-down">
           <span>scroll down</span>
           <svg
-            aria-hidden='true'
-            focusable='false'
-            data-prefix='fal'
-            data-icon='arrow-down'
-            role='img'
-            xmlns='http://www.w3.org/2000/svg'
-            viewBox='0 0 448 512'
-            className='svg-inline--fa fa-arrow-down fa-w-14 fa-5x'
-          >
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fal"
+            data-icon="arrow-down"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+            className="svg-inline--fa fa-arrow-down fa-w-14 fa-5x">
             <path
-              fill='currentColor'
-              d='M443.5 248.5l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L241 419.9V44c0-6.6-5.4-12-12-12h-10c-6.6 0-12 5.4-12 12v375.9L28.5 241.4c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.8 4.8-12.3.1-17z'
-              className=''
-            ></path>
+              fill="currentColor"
+              d="M443.5 248.5l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L241 419.9V44c0-6.6-5.4-12-12-12h-10c-6.6 0-12 5.4-12 12v375.9L28.5 241.4c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.8 4.8-12.3.1-17z"
+              className=""></path>
           </svg>
         </div>
       </section>
       <section
-        style={isMobile ? { display: 'flex' } : portfolioBackImgStyle}
-        className='section-child'
-        id='section-portfolio'
-      >
-        <div className='section-big-word section-big-word-work'>WORK</div>
+        style={isMobile ? { display: "flex" } : portfolioBackImgStyle}
+        className="section-child"
+        id="section-portfolio">
+        <div className="section-big-word section-big-word-work">WORK</div>
         <MyFlipBook inView={inView} />
       </section>
-      <section className='section-child' id='section-skills'>
-        <div className='section-big-word section-big-word-skills section-bigWord-zIndex'>
+      <section className="section-child" id="section-skills">
+        <div className="section-big-word section-big-word-skills section-bigWord-zIndex">
           Skills
         </div>
-          <p className='section-main-heading'>Skills</p>
-        <CloudTagComp ssrID={'homeSSRCloud'} />
-        <div className='scroll-down scroll-down-skills scroll-down-left'>
+        <p className="section-main-heading">Skills</p>
+        <CloudTagComp ssrID={"homeSSRCloud"} />
+        <div className="scroll-down scroll-down-skills scroll-down-left">
           <span>Made it</span>
           <svg
-            aria-hidden='true'
-            focusable='false'
-            data-prefix='fal'
-            data-icon='arrow-down'
-            role='img'
-            xmlns='http://www.w3.org/2000/svg'
-            viewBox='0 0 448 512'
-            className='svg-inline--fa fa-arrow-down fa-w-14 fa-5x'
-          >
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fal"
+            data-icon="arrow-down"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+            className="svg-inline--fa fa-arrow-down fa-w-14 fa-5x">
             <path
-              fill='currentColor'
-              d='M443.5 248.5l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L241 419.9V44c0-6.6-5.4-12-12-12h-10c-6.6 0-12 5.4-12 12v375.9L28.5 241.4c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.8 4.8-12.3.1-17z'
-              className=''
-            ></path>
+              fill="currentColor"
+              d="M443.5 248.5l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L241 419.9V44c0-6.6-5.4-12-12-12h-10c-6.6 0-12 5.4-12 12v375.9L28.5 241.4c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.8 4.8-12.3.1-17z"
+              className=""></path>
           </svg>
         </div>
-        <div className='scroll-down scroll-down-skills'>
+        <div className="scroll-down scroll-down-skills">
           <span>Made it</span>
           <svg
-            aria-hidden='true'
-            focusable='false'
-            data-prefix='fal'
-            data-icon='arrow-down'
-            role='img'
-            xmlns='http://www.w3.org/2000/svg'
-            viewBox='0 0 448 512'
-            className='svg-inline--fa fa-arrow-down fa-w-14 fa-5x'
-          >
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fal"
+            data-icon="arrow-down"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+            className="svg-inline--fa fa-arrow-down fa-w-14 fa-5x">
             <path
-              fill='currentColor'
-              d='M443.5 248.5l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L241 419.9V44c0-6.6-5.4-12-12-12h-10c-6.6 0-12 5.4-12 12v375.9L28.5 241.4c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.8 4.8-12.3.1-17z'
-              className=''
-            ></path>
+              fill="currentColor"
+              d="M443.5 248.5l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L241 419.9V44c0-6.6-5.4-12-12-12h-10c-6.6 0-12 5.4-12 12v375.9L28.5 241.4c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.8 4.8-12.3.1-17z"
+              className=""></path>
           </svg>
         </div>
       </section>
       <section
         ref={ref}
-        id='section-contactMe'
-        className='section-content section section-child '
-        style={portfolioBackImgStyleContact}
-      >
-        <div className='section-big-word-contact section-big-word-contact'>
+        id="section-contactMe"
+        className="section-content section section-child "
+        style={portfolioBackImgStyleContact}>
+        <div className="section-big-word-contact section-big-word-contact">
           Contact
         </div>
-        <div className='contact-container'>
-          <div className='form-container'>
+        <div className="contact-container">
+          <div className="form-container">
             <Form
-              method='post'
-              className='form-element'
-              onSubmit={() => sendEmail(options)}
-            >
-              <div className='contact-div'>
-                <div className='title'>Contact me</div>
-                <div className='fields'>
-                  <div className='form-name'>
+              method="post"
+              className="form-element"
+              onSubmit={() => sendEmail(options)}>
+              <div className="contact-div">
+                <div className="title">Contact me</div>
+                <div className="fields">
+                  <div className="form-name">
                     <input
-                      type='username'
-                      className='user-input'
-                      name='name'
+                      type="username"
+                      className="user-input"
+                      name="name"
                       value={name}
-                      placeholder={name ? name : 'Name'}
-                      onChange={e => handleOnInputChange(e, 'name')}
+                      placeholder={name ? name : "Name"}
+                      onChange={(e) => handleOnInputChange(e, "name")}
                     />
                   </div>
-                  <div className='form-email'>
+                  <div className="form-email">
                     <input
-                      type='email'
-                      name='email'
-                      className='user-input'
+                      type="email"
+                      name="email"
+                      className="user-input"
                       value={email}
-                      placeholder={email ? email : 'Email'}
-                      onChange={e => handleOnInputChange(e, 'email')}
+                      placeholder={email ? email : "Email"}
+                      onChange={(e) => handleOnInputChange(e, "email")}
                     />
                   </div>
-                  <div className='form-subject'>
+                  <div className="form-subject">
                     <input
-                      type='username'
-                      name='subject'
-                      className='user-input'
+                      type="username"
+                      name="subject"
+                      className="user-input"
                       value={subject}
-                      placeholder={subject ? subject : 'Subject'}
-                      onChange={e => handleOnInputChange(e, 'subject')}
+                      placeholder={subject ? subject : "Subject"}
+                      onChange={(e) => handleOnInputChange(e, "subject")}
                     />
                   </div>
-                  <div className='form-message'>
+                  <div className="form-message">
                     <textarea
-                      id='message'
-                      className='user-input'
-                      name='message'
+                      id="message"
+                      className="user-input"
+                      name="message"
                       rows={3}
                       value={message}
-                      placeholder={message ? message : 'Email body'}
-                      onChange={e => handleOnInputChange(e, 'message')}
+                      placeholder={message ? message : "Email body"}
+                      onChange={(e) => handleOnInputChange(e, "message")}
                     />
                   </div>
                 </div>
                 <button
                   className={
-                    isDisabled ? 'send-msg-btn-disabled' : 'send-msg-btn'
+                    isDisabled ? "send-msg-btn-disabled" : "send-msg-btn"
                   }
                   disabled={isDisabled}
-                  type='submit'
-                >
+                  type="submit">
                   <span>{text}</span>
                 </button>
               </div>
@@ -463,13 +450,13 @@ export default function IndexRoute () {
           <MyMap customOptions={customOptions} />
         </div>
       </section>
-      <footer>
-        <div className='footer-container'>
-          <div className='footer-content'>
+      <footer className="footer-home">
+        <div className="footer-container">
+          <div className="footer-content">
             Made with <span>❤️</span> in New York
           </div>
         </div>
       </footer>
     </div>
-  )
+  );
 }

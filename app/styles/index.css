@@ -83,7 +83,7 @@ body {
   align-items: center;
   flex-direction: column;
   width: 100%;
-  margin: 10em 0;
+  margin: 0;
 }
 
 .heading-subtexts-container {
@@ -406,6 +406,8 @@ textarea {
   }
 }
 
-.footer-container {
-  margin-bottom: 16px;
+.footer-home {
+  justify-content: center;
+  display: flex;
+  width: 100%;
 }
