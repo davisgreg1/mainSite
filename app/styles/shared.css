@@ -18,8 +18,16 @@
   text-decoration: none;
 }
 
+.svg-icon {
+  width: 55px;
+  height: 55px;
+}
+
 .hamburgerMenu-nav-show {
+  width: 100%;
   display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
   margin: 12px;
   height: 3rem;
   position: fixed;
@@ -128,14 +136,14 @@
   z-index: 9999;
 }
 
-@media only screen and (max-width: 1140px) {
-  .header-nav-hide {
+@media only screen and (min-width: 1140px) {
+  .hamburgerMenu-nav-show {
     display: none;
   }
 }
 
-@media only screen and (min-width: 1140px) {
-  .hamburgerMenu-nav-show {
+@media only screen and (max-width: 1139px) {
+  .header-nav-hide {
     display: none;
   }
 }

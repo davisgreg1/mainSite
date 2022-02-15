@@ -3,11 +3,8 @@ body {
 }
 
 [data-primary-nav-text] {
-  color: white;
-}
-
-[data-primary-list] {
-  background-color: rgba(0, 0, 0, 0.4);
+  color: black;
+  font-weight: bold;
 }
 
 .title {

@@ -1,110 +1,109 @@
-import React, { useState } from 'react'
-import { NavLink } from 'remix'
+import React, { useState } from "react";
+import { NavLink } from "remix";
 
 const TopNav = () => {
-  const [open, setOpen] = useState(false)
-  const [showOrHideText, setShowOrHideText] = useState('show')
+  const [open, setOpen] = useState(false);
+  const [showOrHideText, setShowOrHideText] = useState("show");
 
   const handleOnClick = () => {
-    setOpen(!open)
-    setShowOrHideText(open ? 'show' : 'hide')
-  }
+    setOpen(!open);
+    setShowOrHideText(open ? "show" : "hide");
+  };
 
   const handleOnKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      setOpen(!open)
-      setShowOrHideText(open ? 'show' : 'hide')
+    if (e.key === "Enter" || e.key === " ") {
+      setOpen(!open);
+      setShowOrHideText(open ? "show" : "hide");
     }
-  }
+  };
 
   let activeStyle = {
-    textDecoration: 'underline',
-    textUnderlineOffset: '4px'
-  }
+    textDecoration: "underline",
+    textUnderlineOffset: "4px",
+  };
 
   return (
     <>
       <div
-        role='button'
+        role="button"
         aria-pressed={open}
-        aria-haspopup='dialog'
+        aria-haspopup="dialog"
         tabIndex={0}
         className={`hamburgerMenu-nav-${showOrHideText}`}
         onClick={handleOnClick}
-        onKeyDown={handleOnKeyDown}
-      >
+        onKeyDown={handleOnKeyDown}>
         <svg
-          role='img'
-          aria-labelledby='title  desc'
-          xmlns='http://www.w3.org/2000/svg'
-          className='h-6 w-6'
-          fill='none'
-          viewBox='0 0 24 24'
-          stroke='currentColor'
-        >
-          <title id='title'>Hamburger Menu</title>
-          <desc id='desc'>
+          role="img"
+          aria-labelledby="title desc"
+          xmlns="http://www.w3.org/2000/svg"
+          className="svg-icon"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor">
+          <title id="title">Hamburger Menu</title>
+          <desc id="desc">
             Three lines stacked on top of each other with space between each
           </desc>
           <path
-            strokeLinecap='round'
-            strokeLinejoin='round'
+            strokeLinecap="round"
+            strokeLinejoin="round"
             strokeWidth={2}
-            d='M4 6h16M4 12h16M4 18h16'
+            d="M4 6h16M4 12h16M4 18h16"
           />
         </svg>
       </div>
       {open ? (
-        <div id='myModal' className='modal'>
-          <div className='modal-content'>
+        <div id="myModal" className="modal">
+          <div className="modal-content">
             <button
               onClick={handleOnClick}
-              className='close modal-button-close'
-            >
+              className="close modal-button-close">
               <svg
-                xmlns='http://www.w3.org/2000/svg'
-                className='h-6 w-6'
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke='currentColor'
-              >
+                xmlns="http://www.w3.org/2000/svg"
+                className="svg-icon"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor">
                 <path
-                  stroke-linecap='round'
-                  stroke-linejoin='round'
-                  stroke-width='2'
-                  d='M6 18L18 6M6 6l12 12'
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
                 />
               </svg>
             </button>
-            <ul className='hamburgerMenu-list-container'>
-              <li className='hamburgerMenu-list-item'>
+            <ul className="hamburgerMenu-list-container">
+              <li className="hamburgerMenu-list-item">
                 <NavLink
                   onClick={handleOnClick}
-                  className='hamburgerMenu-list-item-text'
-                  to={'/'}
-                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                >
-                  {'Home'}
+                  className="hamburgerMenu-list-item-text"
+                  to={"/"}
+                  style={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }>
+                  {"Home"}
                 </NavLink>
               </li>
-              <li className='hamburgerMenu-list-item'>
+              <li className="hamburgerMenu-list-item">
                 <NavLink
                   onClick={handleOnClick}
-                  className='hamburgerMenu-list-item-text'
-                  to={'about'}
-                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                >
-                  {'About'}
+                  className="hamburgerMenu-list-item-text"
+                  to={"about"}
+                  style={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }>
+                  {"About"}
                 </NavLink>
               </li>
-              <li className='hamburgerMenu-list-item'>
+              <li className="hamburgerMenu-list-item">
                 <NavLink
                   onClick={handleOnClick}
-                  className='hamburgerMenu-list-item-text'
-                  to={'skills'}
-                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                >
-                  {'Skills'}
+                  className="hamburgerMenu-list-item-text"
+                  to={"skills"}
+                  style={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }>
+                  {"Skills"}
                 </NavLink>
               </li>
               {/* <li className='hamburgerMenu-list-item'>
@@ -117,49 +116,47 @@ const TopNav = () => {
                   {'Blogs'}
                 </NavLink>
               </li> */}
-              <li className='hamburgerMenu-list-item'>
+              <li className="hamburgerMenu-list-item">
                 <NavLink
                   onClick={handleOnClick}
-                  className='hamburgerMenu-list-item-text'
-                  to={'contact'}
-                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                >
-                  {'Contact'}
+                  className="hamburgerMenu-list-item-text"
+                  to={"contact"}
+                  style={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }>
+                  {"Contact"}
                 </NavLink>
               </li>
             </ul>
           </div>
         </div>
       ) : (
-        ''
+        ""
       )}
-      <nav className='header-nav-hide' data-primary-nav>
+      <nav className="header-nav-hide" data-primary-nav>
         <ul data-primary-list>
           <li data-primary-list-item>
             <NavLink
               style={({ isActive }) => (isActive ? activeStyle : undefined)}
               data-primary-nav-text
-              to={'/'}
-            >
-              {'Home'}
+              to={"/"}>
+              {"Home"}
             </NavLink>
           </li>
           <li data-primary-list-item>
             <NavLink
               data-primary-nav-text
-              to={'about'}
-              style={({ isActive }) => (isActive ? activeStyle : undefined)}
-            >
-              {'About'}
+              to={"about"}
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}>
+              {"About"}
             </NavLink>
           </li>
           <li data-primary-list-item>
             <NavLink
               data-primary-nav-text
-              to={'skills'}
-              style={({ isActive }) => (isActive ? activeStyle : undefined)}
-            >
-              {'Skills'}
+              to={"skills"}
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}>
+              {"Skills"}
             </NavLink>
           </li>
           {/* <li data-primary-list-item>
@@ -174,16 +171,15 @@ const TopNav = () => {
           <li data-primary-list-item>
             <NavLink
               data-primary-nav-text
-              to={'contact'}
-              style={({ isActive }) => (isActive ? activeStyle : undefined)}
-            >
-              {'Contact'}
+              to={"contact"}
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}>
+              {"Contact"}
             </NavLink>
           </li>
         </ul>
       </nav>
     </>
-  )
-}
+  );
+};
 
-export default TopNav
+export default TopNav;

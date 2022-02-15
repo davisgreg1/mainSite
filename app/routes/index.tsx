@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import {
   redirect,
   LinksFunction,
@@ -8,18 +8,17 @@ import {
   useTransition,
   useLoaderData,
   json,
-  Form
-} from 'remix'
-import { useNavigate } from 'react-router-dom'
-import { useMediaQuery } from 'react-responsive'
-import { useInView } from 'react-intersection-observer'
-import styles from '~/styles/index.css'
-import Particles from 'react-tsparticles'
-import particlesConfig from '~/particlesConfig'
-import MyFlipBook from '../components/MyFlipBook'
-import MyMap from '../components/MyMap'
-import CloudTagComp from '../components/CloudTagComp'
-import sendEmail from '~/utils/sendEmail'
+  Form,
+} from "remix";
+import { useNavigate } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
+import styles from "~/styles/index.css";
+import Particles from "react-tsparticles";
+import particlesConfig from "~/particlesConfig";
+import MyFlipBook from "../components/MyFlipBook";
+import MyMap from "../components/MyMap";
+import CloudTagComp from "../components/CloudTagComp";
+import sendEmail from "~/utils/sendEmail";
 import {
   siJavascript,
   siTypescript,
@@ -41,83 +40,81 @@ import {
   siNpm,
   siJira,
   siRedis,
-  siMacos
-} from 'simple-icons/icons'
+  siMacos,
+} from "simple-icons/icons";
 
 type FormErrorType = {
-  name?: boolean
-  email?: boolean
-  subject?: boolean
-  message?: boolean
-}
+  name?: boolean;
+  email?: boolean;
+  subject?: boolean;
+  message?: boolean;
+};
 
 type KeyLogType = {
-  key?: boolean
-}
+  key?: boolean;
+};
 export const action: ActionFunction = async ({ request }) => {
-  const formData = await request.formData()
+  const formData = await request.formData();
 
-  const name = formData.get('name')
-  const email = formData.get('email')
-  const subject = formData.get('subject')
-  const message = formData.get('message')
+  const name = formData.get("name");
+  const email = formData.get("email");
+  const subject = formData.get("subject");
+  const message = formData.get("message");
 
-  const errors: FormErrorType = {}
-  if (!name) errors.name = true
-  if (!email) errors.email = true
-  if (!subject) errors.subject = true
-  if (!message) errors.message = true
+  const errors: FormErrorType = {};
+  if (!name) errors.name = true;
+  if (!email) errors.email = true;
+  if (!subject) errors.subject = true;
+  if (!message) errors.message = true;
 
   if (Object.keys(errors).length) {
-    return json(errors, { status: 422 })
+    return json(errors, { status: 422 });
   }
 
-  return redirect('/')
-}
+  return redirect("/");
+};
 
 export const links: LinksFunction = () => {
   return [
     {
-      rel: 'stylesheet',
-      href: styles
+      rel: "stylesheet",
+      href: styles,
     },
     {
-      rel: 'stylesheet',
-      type: 'text/css',
-      charSet: 'UTF-8',
-      href:
-        'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css'
+      rel: "stylesheet",
+      type: "text/css",
+      charSet: "UTF-8",
+      href: "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css",
     },
     {
-      rel: 'stylesheet',
-      type: 'text/css',
-      href:
-        'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css'
-    }
-  ]
-}
+      rel: "stylesheet",
+      type: "text/css",
+      href: "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css",
+    },
+  ];
+};
 
 // https://remix.run/api/conventions#meta
 export let meta: MetaFunction = () => {
   return {
     title: `Home - Greg | FullStack Developer`,
-    description: 'Welcome to my site'
-  }
-}
+    description: "Welcome to my site",
+  };
+};
 
-export function loader () {
+export function loader() {
   return {
     ENV: {
       GOOGLE_MAP_ID: process.env.GOOGLE_MAP_ID,
       GOOGLE_MAP_API_KEY: process.env.GOOGLE_MAP_API_KEY,
       EMAIL_SERVICE_ID: process.env.EMAIL_SERVICE_ID,
       EMAIL_TEMPLATE_ID: process.env.EMAIL_TEMPLATE_ID,
-      EMAIL_API_KEY: process.env.EMAIL_API_KEY
-    }
-  }
+      EMAIL_API_KEY: process.env.EMAIL_API_KEY,
+    },
+  };
 }
-export const unstable_shouldReload = () => false
-export default function IndexRoute () {
+export const unstable_shouldReload = () => false;
+export default function IndexRoute() {
   const icons = [
     siJavascript,
     siTypescript,
@@ -139,99 +136,97 @@ export default function IndexRoute () {
     siNpm,
     siJira,
     siRedis,
-    siMacos
-  ]
-
-  let navigate = useNavigate()
-  const errors = useActionData()
-  const transition = useTransition()
-  const loaderData = useLoaderData()
+    siMacos,
+  ];
+  const ref = useRef();
+  const contactMeRef = useRef();
+  let navigate = useNavigate();
+  const errors = useActionData();
+  const transition = useTransition();
+  const loaderData = useLoaderData();
   const {
-    ENV: { EMAIL_API_KEY, EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID }
-  } = loaderData
+    ENV: { EMAIL_API_KEY, EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID },
+  } = loaderData;
   const options = {
     EMAIL_SERVICE_ID,
     EMAIL_TEMPLATE_ID,
-    EMAIL_API_KEY
-  }
-  const { state, type, location } = transition
-  const isDesktopOrLaptop = useMediaQuery({ minWidth: 1241 })
-  const isTabletVal = useMediaQuery({ minWidth: 720, maxWidth: 1240 })
-  const isMobileVal = useMediaQuery({ maxWidth: 719 })
+    EMAIL_API_KEY,
+  };
+  const { state, type, location } = transition;
+  const isDesktopOrLaptop = useMediaQuery({ minWidth: 1241 });
+  const isTabletVal = useMediaQuery({ minWidth: 720, maxWidth: 1240 });
+  const isMobileVal = useMediaQuery({ maxWidth: 719 });
 
-  const [isMobile, setIsMobile] = useState(isMobileVal)
-  const [isTablet, setIsTablet] = useState(isTabletVal)
-  const [isDesktop, setIsDesktop] = useState(isDesktopOrLaptop)
-  const [isDisabled, setIsDisabled] = useState(true)
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [subject, setSubject] = useState('')
-  const [message, setMessage] = useState('')
+  const [isMobile, setIsMobile] = useState(isMobileVal);
+  const [isTablet, setIsTablet] = useState(isTabletVal);
+  const [isDesktop, setIsDesktop] = useState(isDesktopOrLaptop);
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
 
-  const keyLog: KeyLogType = {}
+  const keyLog: KeyLogType = {};
 
   const handleKeyboard = ({ type, key, repeat, metaKey }) => {
-    if (repeat) return
+    if (repeat) return;
 
-    if (type === 'keydown') {
-      keyLog[key] = true
+    if (type === "keydown") {
+      keyLog[key] = true;
 
-      if (keyLog.s && key === 'u') navigate('/adminloginz', { replace: true })
+      if (keyLog.s && key === "u") navigate("/adminloginz", { replace: true });
     }
 
-    if (type === 'keyup') delete keyLog[key]
-  }
+    if (type === "keyup") delete keyLog[key];
+  };
 
   React.useEffect(() => {
-    const events = ['keydown', 'keyup']
-    events.forEach(name => document.addEventListener(name, handleKeyboard))
+    const events = ["keydown", "keyup"];
+    events.forEach((name) => document.addEventListener(name, handleKeyboard));
 
     return () =>
-      events.forEach(name => document.removeEventListener(name, handleKeyboard))
-  })
+      events.forEach((name) =>
+        document.removeEventListener(name, handleKeyboard),
+      );
+  });
 
   useEffect(() => {
-    if (transition.state === 'submitting') {
-      clearForm()
+    if (transition.state === "submitting") {
+      clearForm();
     }
-  }, [transition])
+  }, [transition]);
 
   useEffect(() => {
-    setIsMobile(isMobileVal)
-    setIsTablet(isTabletVal)
-    setIsDesktop(isDesktopOrLaptop)
-  })
+    setIsMobile(isMobileVal);
+    setIsTablet(isTabletVal);
+    setIsDesktop(isDesktopOrLaptop);
+  });
 
   useEffect(() => {
     if (name && email && subject && message) {
-      setIsDisabled(false)
+      setIsDisabled(false);
     } else {
-      setIsDisabled(true)
+      setIsDisabled(true);
     }
-  }, [name, email, subject, message])
-
-  const { ref, inView } = useInView({
-    /* Optional options */
-    threshold: 1
-  })
+  }, [name, email, subject, message]);
 
   const clearForm = () => {
-    setName('')
-    setEmail('')
-    setSubject('')
-    setMessage('')
-  }
+    setName("");
+    setEmail("");
+    setSubject("");
+    setMessage("");
+  };
 
   const portfolioBackImgStyle = {
-    backgroundColor: '#ecf0f3',
-    display: 'flex',
-    height: '100vh'
-  }
+    backgroundColor: "#ecf0f3",
+    display: "flex",
+    height: "100vh",
+  };
 
   const portfolioBackImgStyleContact = {
-    backgroundColor: '#ecf0f3',
-    display: 'flex'
-  }
+    backgroundColor: "#ecf0f3",
+    display: "flex",
+  };
 
   const customOptions = {
     mapTypeControl: false,
@@ -242,37 +237,37 @@ export default function IndexRoute () {
     scaleControl: false,
     streetViewControl: false,
     zoomControl: false,
-    fullscreenControl: false
-  }
+    fullscreenControl: false,
+  };
   const handleOnInputChange = (
     e:
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLTextAreaElement>,
-    inputName: string
+    inputName: string,
   ) => {
-    const value = e.target.value
-    if (inputName === 'name') {
-      setName(value)
+    const value = e.target.value;
+    if (inputName === "name") {
+      setName(value);
     }
-    if (inputName === 'email') {
-      setEmail(value)
+    if (inputName === "email") {
+      setEmail(value);
     }
-    if (inputName === 'subject') {
-      setSubject(value)
+    if (inputName === "subject") {
+      setSubject(value);
     }
-    if (inputName === 'message') {
-      setMessage(value)
+    if (inputName === "message") {
+      setMessage(value);
     }
-  }
+  };
 
   const text =
     !email || !subject || !message || !name
-      ? 'Complete the form'
-      : transition.state === 'submitting'
-      ? 'Sending...'
-      : transition.state === 'loading'
-      ? 'Thank you!'
-      : 'Send message'
+      ? "Complete the form"
+      : transition.state === "submitting"
+      ? "Sending..."
+      : transition.state === "loading"
+      ? "Thank you!"
+      : "Send message";
 
   return (
     <div className="container">
@@ -334,7 +329,7 @@ export default function IndexRoute () {
         className="section-child"
         id="section-portfolio">
         <div className="section-big-word section-big-word-work">WORK</div>
-        <MyFlipBook inView={inView} />
+        <MyFlipBook />
       </section>
       <section className="section-child" id="section-skills">
         <div className="section-big-word section-big-word-skills section-bigWord-zIndex">
@@ -378,7 +373,6 @@ export default function IndexRoute () {
         </div>
       </section>
       <section
-        ref={ref}
         id="section-contactMe"
         className="section-content section section-child "
         style={portfolioBackImgStyleContact}>

@@ -8,16 +8,19 @@ body {
   );
 }
 
-[data-primary-nav-text] {
-  color: white;
-}
-
-[data-primary-list] {
-  background-color: rgba(0, 0, 0, 0.5);
+.svg-icon {
+  width: 55px;
+  height: 55px;
+  color: black;
 }
 
 #tsparticles {
   z-index: -1;
+}
+
+[data-primary-nav-text] {
+  color: black;
+  font-weight: bold;
 }
 
 .container {
@@ -206,7 +209,7 @@ body {
 }
 
 #section-home {
-  height: 100vh;
+  height: 1100px;
   min-height: 100vh;
   display: flex;
 }
