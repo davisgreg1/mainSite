@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import contentful from "contentful";
 
-export const useContentful = (
+export const fetchContentfulData = (
   CONTENTFUL_SPACE_ID: string,
   CONTENTFUL_DELIVERY_TOKEN: string,
 ) => {

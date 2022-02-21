@@ -1,7 +1,7 @@
 import { LinksFunction, MetaFunction, useLoaderData } from "remix";
 import type { LoaderFunction } from "remix";
 import BlogWall from "../../components/BlogWall";
-import { useContentful } from "~/utils/useContentful";
+import { fetchContentfulData } from "~/utils/fetchContentfulData";
 import styles from "~/styles/blogs.css";
 
 export const links: LinksFunction = () => {
@@ -42,7 +42,10 @@ interface PostsType {
 const Blogs = () => {
   const loaderData = useLoaderData();
   const { CONTENTFUL_DELIVERY_TOKEN, CONTENTFUL_SPACE_ID } = loaderData;
-  const blogs = useContentful(CONTENTFUL_SPACE_ID, CONTENTFUL_DELIVERY_TOKEN);
+  const blogs = fetchContentfulData(
+    CONTENTFUL_SPACE_ID,
+    CONTENTFUL_DELIVERY_TOKEN,
+  );
   return (
     <div className="blog-route-container">
       <h1 className="blog-route-heading">

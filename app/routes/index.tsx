@@ -19,7 +19,7 @@ import MyMap from "../components/MyMap";
 import CloudTagComp from "../components/CloudTagComp";
 import BlogWall from "../components/BlogWall";
 import sendEmail from "~/utils/sendEmail";
-import { useContentful } from "~/utils/useContentful";
+import { fetchContentfulData } from "~/utils/fetchContentfulData";
 
 type FormErrorType = {
   name?: boolean;
@@ -103,7 +103,10 @@ export default function IndexRoute() {
     CONTENTFUL_DELIVERY_TOKEN,
     CONTENTFUL_SPACE_ID,
   } = loaderData;
-  const blogs = useContentful(CONTENTFUL_SPACE_ID, CONTENTFUL_DELIVERY_TOKEN);
+  const blogs = fetchContentfulData(
+    CONTENTFUL_SPACE_ID,
+    CONTENTFUL_DELIVERY_TOKEN,
+  );
 
   const options = {
     EMAIL_SERVICE_ID,

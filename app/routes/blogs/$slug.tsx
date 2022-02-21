@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useLoaderData, MetaFunction, Link } from "remix";
 import type { LoaderFunction } from "remix";
 import dayjs from "dayjs";
-import { useContentful } from "~/utils/useContentful";
+import { fetchContentfulData } from "~/utils/fetchContentfulData";
 import isEmptyObj from "~/utils/isEmptyObj";
 
 // https://remix.run/api/conventions#meta
@@ -24,7 +24,10 @@ const BlogSlug = () => {
   const [specificBlog, setSpecificBlog] = useState({});
   const data = useLoaderData();
   const { CONTENTFUL_SPACE_ID, CONTENTFUL_DELIVERY_TOKEN, slug } = data;
-  const blogs = useContentful(CONTENTFUL_SPACE_ID, CONTENTFUL_DELIVERY_TOKEN);
+  const blogs = fetchContentfulData(
+    CONTENTFUL_SPACE_ID,
+    CONTENTFUL_DELIVERY_TOKEN,
+  );
   const blogsEmpty = isEmptyObj(blogs);
 
   useEffect(() => {
