@@ -13,6 +13,17 @@ html {
   font-family: "Poppins", sans-serif;
 }
 
+.card-link {
+  text-decoration: none;
+  color: white;
+}
+
+.card-link-black {
+  text-decoration: none;
+  color: black;
+  width: fit-content;
+}
+
 ::placeholder,
 .user-input {
   font-family: "Poppins", sans-serif;
@@ -125,7 +136,7 @@ ul {
 
 .font22 {
   font-size: 22px;
-  color: #785e3a
+  color: #785e3a;
 }
 
 @media screen and (max-width: 719px) {

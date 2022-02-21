@@ -60,7 +60,8 @@ body {
 
 @media screen and (max-width: 719px) {
   .section-big-word,
-  .section-big-word-contact {
+  .section-big-word-contact,
+  .section-big-word-blog {
     display: none;
   }
 }
@@ -222,7 +223,7 @@ body {
   width: 100%;
 }
 
-#section-skills {
+#section-skills, #section-blog {
   justify-content: center;
   display: flex;
   width: 100%;
@@ -233,6 +234,10 @@ body {
   margin: auto;
 }
 
+#section-blog {
+  height: 100vh;
+}
+
 .section {
   display: flex;
   justify-content: flex-start;
@@ -240,7 +245,8 @@ body {
 
 .section-big-word-contact,
 .section-big-word-skills,
-.section-big-word-work {
+.section-big-word-work,
+.section-big-word-blog {
   width: -webkit-fill-available;
   padding-left: 24px;
 }
