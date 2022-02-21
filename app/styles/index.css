@@ -164,51 +164,6 @@ body {
   }
 }
 
-.scroll-down-skills {
-  bottom: -8rem !important;
-}
-
-.scroll-down {
-  position: absolute;
-  right: 10px;
-  bottom: 2rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  font-size: 14px;
-  color: #fff;
-}
-
-.scroll-down-left {
-  left: 10px;
-  right: auto;
-}
-
-.scroll-down > span {
-  -webkit-writing-mode: vertical-rl;
-  -ms-writing-mode: tb-rl;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  -webkit-animation-name: bounce-it;
-  animation-name: bounce-it;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-}
-
 #section-home {
   height: 1100px;
   min-height: 100vh;
