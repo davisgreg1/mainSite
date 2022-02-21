@@ -140,6 +140,91 @@
   color: white;
 }
 
+.blog-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  flex-direction: row;
+  width: 100%;
+  overflow: scroll;
+}
+
+.individual-card-container:hover {
+  box-shadow: 3px 3px 3px 3px #ecf0f3;
+}
+
+.individual-card-footer {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+}
+
+.individual-card-footer-span {
+  padding: 0 10px;
+  font-size: 22px;
+}
+
+.container-color-black {
+  color: black;
+}
+
+.individual-card-container {
+  height: 500px;
+  width: 293px;
+  border: solid #818a91;
+  border-radius: 8px;
+  transition-property: border, box-shadow, -webkit-box-shadow;
+  transition: all 0.5s;
+  position: relative;
+  padding: 0 24px;
+  margin: 12px;
+}
+
+.individual-card-content {
+  margin: 0 auto;
+  letter-spacing: 2px;
+}
+
+.individual-card-title {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 150px;
+}
+
+.card-title-text {
+  display: flex;
+}
+
+.individual-card-footer-text {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.uniq-blog-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.uniq-blog-sub {
+  margin: 8px 0;
+}
+
+.uniq-blog-container {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+
+.uniq-blog-content {
+  display: flex;
+  letter-spacing: 2px;
+  font-size: 24px;
+}
+
 @media only screen and (min-width: 1140px) {
   .hamburgerMenu-nav-show {
     display: none;

@@ -4,7 +4,6 @@ import {
   LinksFunction,
   MetaFunction,
   ActionFunction,
-  useActionData,
   useTransition,
   useLoaderData,
   json,
@@ -18,30 +17,9 @@ import particlesConfig from "~/particlesConfig";
 import MyFlipBook from "../components/MyFlipBook";
 import MyMap from "../components/MyMap";
 import CloudTagComp from "../components/CloudTagComp";
+import BlogWall from "../components/BlogWall";
 import sendEmail from "~/utils/sendEmail";
-import {
-  siJavascript,
-  siTypescript,
-  siNextdotjs,
-  siNodedotjs,
-  siCss3,
-  siHtml5,
-  siReact,
-  siGit,
-  siExpress,
-  siPostgresql,
-  siAmazonaws,
-  siJest,
-  siVisualstudiocode,
-  siSequelize,
-  siJson,
-  siTrello,
-  siJquery,
-  siNpm,
-  siJira,
-  siRedis,
-  siMacos,
-} from "simple-icons/icons";
+import { useContentful } from "~/utils/useContentful";
 
 type FormErrorType = {
   name?: boolean;
@@ -104,55 +82,34 @@ export let meta: MetaFunction = () => {
 
 export function loader() {
   return {
-    ENV: {
-      GOOGLE_MAP_ID: process.env.GOOGLE_MAP_ID,
-      GOOGLE_MAP_API_KEY: process.env.GOOGLE_MAP_API_KEY,
-      EMAIL_SERVICE_ID: process.env.EMAIL_SERVICE_ID,
-      EMAIL_TEMPLATE_ID: process.env.EMAIL_TEMPLATE_ID,
-      EMAIL_API_KEY: process.env.EMAIL_API_KEY,
-    },
+    GOOGLE_MAP_ID: process.env.GOOGLE_MAP_ID,
+    GOOGLE_MAP_API_KEY: process.env.GOOGLE_MAP_API_KEY,
+    EMAIL_SERVICE_ID: process.env.EMAIL_SERVICE_ID,
+    EMAIL_TEMPLATE_ID: process.env.EMAIL_TEMPLATE_ID,
+    EMAIL_API_KEY: process.env.EMAIL_API_KEY,
+    CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
+    CONTENTFUL_DELIVERY_TOKEN: process.env.CONTENTFUL_DELIVERY_TOKEN,
   };
 }
 export const unstable_shouldReload = () => false;
 export default function IndexRoute() {
-  const icons = [
-    siJavascript,
-    siTypescript,
-    siNextdotjs,
-    siNodedotjs,
-    siCss3,
-    siHtml5,
-    siReact,
-    siGit,
-    siExpress,
-    siPostgresql,
-    siAmazonaws,
-    siJest,
-    siVisualstudiocode,
-    siSequelize,
-    siJson,
-    siTrello,
-    siJquery,
-    siNpm,
-    siJira,
-    siRedis,
-    siMacos,
-  ];
-  const ref = useRef();
-  const contactMeRef = useRef();
   let navigate = useNavigate();
-  const errors = useActionData();
   const transition = useTransition();
   const loaderData = useLoaderData();
   const {
-    ENV: { EMAIL_API_KEY, EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID },
+    EMAIL_API_KEY,
+    EMAIL_SERVICE_ID,
+    EMAIL_TEMPLATE_ID,
+    CONTENTFUL_DELIVERY_TOKEN,
+    CONTENTFUL_SPACE_ID,
   } = loaderData;
+  const blogs = useContentful(CONTENTFUL_SPACE_ID, CONTENTFUL_DELIVERY_TOKEN);
+
   const options = {
     EMAIL_SERVICE_ID,
     EMAIL_TEMPLATE_ID,
     EMAIL_API_KEY,
   };
-  const { state, type, location } = transition;
   const isDesktopOrLaptop = useMediaQuery({ minWidth: 1241 });
   const isTabletVal = useMediaQuery({ minWidth: 720, maxWidth: 1240 });
   const isMobileVal = useMediaQuery({ maxWidth: 719 });
@@ -371,6 +328,13 @@ export default function IndexRoute() {
               className=""></path>
           </svg>
         </div>
+      </section>
+      <section className="section-blog" id="section-blog">
+        <div className="section-big-word section-big-word-blog section-bigWord-zIndex">
+          Blogs
+        </div>
+        <p className="section-main-heading">Blogs</p>
+        <BlogWall blogs={blogs} />
       </section>
       <section
         id="section-contactMe"

@@ -106,16 +106,17 @@ const TopNav = () => {
                   {"Skills"}
                 </NavLink>
               </li>
-              {/* <li className='hamburgerMenu-list-item'>
+              <li className="hamburgerMenu-list-item">
                 <NavLink
                   onClick={handleOnClick}
-                  className='hamburgerMenu-list-item-text'
-                  to={'blogs'}
-                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                >
-                  {'Blogs'}
+                  className="hamburgerMenu-list-item-text"
+                  to={"blogs"}
+                  style={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }>
+                  {"Blogs"}
                 </NavLink>
-              </li> */}
+              </li>
               <li className="hamburgerMenu-list-item">
                 <NavLink
                   onClick={handleOnClick}
@@ -159,15 +160,14 @@ const TopNav = () => {
               {"Skills"}
             </NavLink>
           </li>
-          {/* <li data-primary-list-item>
+          <li data-primary-list-item>
             <NavLink
               data-primary-nav-text
-              to={'blogs'}
-              style={({ isActive }) => (isActive ? activeStyle : undefined)}
-            >
-              {'Blogs'}
+              to={"blogs"}
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}>
+              {"Blogs"}
             </NavLink>
-          </li> */}
+          </li>
           <li data-primary-list-item>
             <NavLink
               data-primary-nav-text
