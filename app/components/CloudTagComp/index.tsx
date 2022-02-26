@@ -105,7 +105,7 @@ const CloudTagComp = (props: any) => {
         return `Express is a web framework that I use daily. I really enjoy using it for those full stack projects.`;
 
       case "PostgreSQL":
-        return `PostgreSQL is a database that I have a lot of experience with. I recently started trying out Sequelize to help work faster..`;
+        return `PostgreSQL is a database that I have a lot of experience with. I recently started trying out Sequelize to help work faster.`;
 
       case "Amazon AWS":
         return `Amazon AWS is a cloud platform that I use with my personal projects.`;
@@ -189,17 +189,19 @@ const CloudTagComp = (props: any) => {
   const cloudIcons = makeIcons();
 
   return (
-    <div className="cloudTagComp-container">
+    <>
       {skillsRoute && (
         <p className="skills-description">{skillSelectedDescription}</p>
       )}
-      <Cloud
-        containerProps={constructedProps.containerProps}
-        options={constructedProps.options}
-        id={ssrID}>
-        {cloudIcons}
-      </Cloud>
-    </div>
+      <div className="cloudTagComp-container">
+        <Cloud
+          containerProps={constructedProps.containerProps}
+          options={constructedProps.options}
+          id={ssrID}>
+          {cloudIcons}
+        </Cloud>
+      </div>
+    </>
   );
 };
 export default CloudTagComp;
