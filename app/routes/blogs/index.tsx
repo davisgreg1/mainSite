@@ -47,9 +47,6 @@ const Blogs = () => {
 
   return (
     <div className="blog-route-container">
-      <h1 className="blog-route-heading">
-        <p>Blogs</p>
-      </h1>
       <BlogWall blogPage={true} blogs={blogs} />
     </div>
   );
