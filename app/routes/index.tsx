@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import {
   redirect,
   LinksFunction,
@@ -9,7 +9,6 @@ import {
   json,
   Form,
 } from "remix";
-import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import styles from "~/styles/index.css";
 import Particles from "react-tsparticles";
@@ -96,7 +95,6 @@ export async function loader() {
 }
 export const unstable_shouldReload = () => false;
 export default function IndexRoute() {
-  let navigate = useNavigate();
   const transition = useTransition();
   const loaderData = useLoaderData();
   const { EMAIL_API_KEY, EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, blogs } =
@@ -119,30 +117,6 @@ export default function IndexRoute() {
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
-
-  const keyLog: KeyLogType = {};
-
-  const handleKeyboard = ({ type, key, repeat, metaKey }) => {
-    if (repeat) return;
-
-    if (type === "keydown") {
-      keyLog[key] = true;
-
-      if (keyLog.s && key === "u") navigate("/adminloginz", { replace: true });
-    }
-
-    if (type === "keyup") delete keyLog[key];
-  };
-
-  React.useEffect(() => {
-    const events = ["keydown", "keyup"];
-    events.forEach((name) => document.addEventListener(name, handleKeyboard));
-
-    return () =>
-      events.forEach((name) =>
-        document.removeEventListener(name, handleKeyboard),
-      );
-  });
 
   useEffect(() => {
     if (transition.state === "submitting") {
