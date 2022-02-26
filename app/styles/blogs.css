@@ -8,12 +8,22 @@ body {
     );
   }
 
-  .blog-route-container {
-    margin-left: 16px;
+  [data-primary-nav-text] {
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
   }
 
-  .blog-route-heading {
-    margin-left: 16px;
+  .blog-route-container {
+    background: #0d47a1;
+    height: 100vh;
+    margin: 0;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    justify-content: center;
+    padding-top: 50px;
   }
 
   .container {

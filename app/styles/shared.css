@@ -170,6 +170,7 @@
 }
 
 .individual-card-container {
+  background: #0d47a1;
   height: 500px;
   width: 293px;
   border: solid #818a91;
@@ -179,6 +180,7 @@
   position: relative;
   padding: 0 24px;
   margin: 12px;
+  color: white;
 }
 
 .individual-card-content {
