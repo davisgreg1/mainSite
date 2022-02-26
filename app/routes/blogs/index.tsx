@@ -27,12 +27,14 @@ export let meta: MetaFunction = () => {
   };
 };
 
-export const loader: LoaderFunction = () => {
-  let data = {
-    CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
-    CONTENTFUL_DELIVERY_TOKEN: process.env.CONTENTFUL_DELIVERY_TOKEN,
+export const loader: LoaderFunction = async () => {
+  const blogs = await fetchContentfulData(
+    process.env.CONTENTFUL_SPACE_ID,
+    process.env.CONTENTFUL_DELIVERY_TOKEN,
+  );
+  return {
+    blogs: blogs,
   };
-  return data;
 };
 
 interface PostsType {
@@ -41,11 +43,8 @@ interface PostsType {
 }
 const Blogs = () => {
   const loaderData = useLoaderData();
-  const { CONTENTFUL_DELIVERY_TOKEN, CONTENTFUL_SPACE_ID } = loaderData;
-  const blogs = fetchContentfulData(
-    CONTENTFUL_SPACE_ID,
-    CONTENTFUL_DELIVERY_TOKEN,
-  );
+  const { blogs } = loaderData;
+
   return (
     <div className="blog-route-container">
       <h1 className="blog-route-heading">
