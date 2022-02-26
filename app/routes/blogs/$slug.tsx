@@ -13,21 +13,20 @@ export let meta: MetaFunction = () => {
   };
 };
 export const loader: LoaderFunction = async ({ params }) => {
+  const blogs = await fetchContentfulData(
+    process.env.CONTENTFUL_SPACE_ID,
+    process.env.CONTENTFUL_DELIVERY_TOKEN,
+  );
   let data = {
     slug: params.slug,
-    CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
-    CONTENTFUL_DELIVERY_TOKEN: process.env.CONTENTFUL_DELIVERY_TOKEN,
+    blogs: blogs,
   };
   return data;
 };
 const BlogSlug = () => {
   const [specificBlog, setSpecificBlog] = useState({});
   const data = useLoaderData();
-  const { CONTENTFUL_SPACE_ID, CONTENTFUL_DELIVERY_TOKEN, slug } = data;
-  const blogs = fetchContentfulData(
-    CONTENTFUL_SPACE_ID,
-    CONTENTFUL_DELIVERY_TOKEN,
-  );
+  const { blogs, slug } = data;
   const blogsEmpty = isEmptyObj(blogs);
 
   useEffect(() => {

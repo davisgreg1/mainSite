@@ -80,15 +80,18 @@ export let meta: MetaFunction = () => {
   };
 };
 
-export function loader() {
+export async function loader() {
+  const blogs = await fetchContentfulData(
+    process.env.CONTENTFUL_SPACE_ID,
+    process.env.CONTENTFUL_DELIVERY_TOKEN,
+  );
   return {
     GOOGLE_MAP_ID: process.env.GOOGLE_MAP_ID,
     GOOGLE_MAP_API_KEY: process.env.GOOGLE_MAP_API_KEY,
     EMAIL_SERVICE_ID: process.env.EMAIL_SERVICE_ID,
     EMAIL_TEMPLATE_ID: process.env.EMAIL_TEMPLATE_ID,
     EMAIL_API_KEY: process.env.EMAIL_API_KEY,
-    CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
-    CONTENTFUL_DELIVERY_TOKEN: process.env.CONTENTFUL_DELIVERY_TOKEN,
+    blogs: blogs,
   };
 }
 export const unstable_shouldReload = () => false;
@@ -96,17 +99,8 @@ export default function IndexRoute() {
   let navigate = useNavigate();
   const transition = useTransition();
   const loaderData = useLoaderData();
-  const {
-    EMAIL_API_KEY,
-    EMAIL_SERVICE_ID,
-    EMAIL_TEMPLATE_ID,
-    CONTENTFUL_DELIVERY_TOKEN,
-    CONTENTFUL_SPACE_ID,
-  } = loaderData;
-  const blogs = fetchContentfulData(
-    CONTENTFUL_SPACE_ID,
-    CONTENTFUL_DELIVERY_TOKEN,
-  );
+  const { EMAIL_API_KEY, EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, blogs } =
+    loaderData;
 
   const options = {
     EMAIL_SERVICE_ID,
