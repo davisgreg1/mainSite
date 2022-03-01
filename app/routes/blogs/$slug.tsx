@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { useLoaderData, MetaFunction, Link } from "remix";
+import { useNavigate } from "react-router-dom";
+import { useLoaderData, MetaFunction } from "remix";
 import type { LoaderFunction } from "remix";
 import dayjs from "dayjs";
 import { fetchContentfulData } from "~/utils/fetchContentfulData";
@@ -24,6 +25,7 @@ export const loader: LoaderFunction = async ({ params }) => {
   return data;
 };
 const BlogSlug = () => {
+  const navigate = useNavigate();
   const [specificBlog, setSpecificBlog] = useState({});
   const data = useLoaderData();
   const { blogs, slug } = data;
@@ -42,13 +44,15 @@ const BlogSlug = () => {
   });
 
   const updatedAvailable = specificBlog?.updatedAt;
+  const handleOnClick = () => navigate(-1);
 
   return (
     <>
       <div className="uniq-blog-container">
-        <Link className="card-link-black" to="../">
+        <button onClick={handleOnClick} className="uniq-blog-goBackBtn">
+          {" "}
           ↩ Go back
-        </Link>
+        </button>
         <p className="uniq-blog-header">
           <h1
             tabIndex={0}

@@ -17,7 +17,9 @@ html {
   color: white;
 }
 
-.card-link-black {
+.uniq-blog-goBackBtn {
+  all: unset;
+  cursor: pointer;
   text-decoration: none;
   color: black;
   width: fit-content;
