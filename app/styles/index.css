@@ -44,6 +44,7 @@ body {
   margin-bottom: 600px;
   margin-top: 24px;
   opacity: 0.5;
+  user-select: none;
 }
 .section-big-word-contact {
   display: flex;
@@ -52,6 +53,7 @@ body {
   position: absolute;
   margin-bottom: 830px;
   margin-top: 24px;
+  user-select: none;
 }
 
 .section-bigWord-zIndex {
@@ -93,6 +95,7 @@ body {
 .heading-subtexts-container {
   display: flex;
   flex-direction: column;
+  user-select: none;
 }
 
 .heading-h1-container {
@@ -280,6 +283,7 @@ body {
   width: 100vw;
   opacity: 0.5;
   margin-left: 24px;
+  user-select: none;
 }
 
 @media screen and (min-width: 720px) {

@@ -243,9 +243,7 @@ export default function IndexRoute() {
         id="section-contactMe"
         className="section-content section section-child "
         style={portfolioBackImgStyleContact}>
-        <div className="section-big-word-contact section-big-word-contact">
-          Contact
-        </div>
+        <div className="section-big-word-contact">Contact</div>
         <div className="contact-container">
           <div className="form-container">
             <Form
