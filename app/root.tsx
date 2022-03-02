@@ -18,18 +18,22 @@ import TopNav from './components/TopNav'
 export const links: LinksFunction = () => {
   return [
     {
-      rel: 'stylesheet',
-      href: globalStyleSheet
+      rel: "icon",
+      href: "/favicon.svg",
+      type: "image/svg+xml",
     },
-    { rel: 'stylesheet', href: sharedStyles },
-    { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-    { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
     {
-      rel: 'stylesheet',
-      href:
-        'https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap'
-    }
-  ]
+      rel: "stylesheet",
+      href: globalStyleSheet,
+    },
+    { rel: "stylesheet", href: sharedStyles },
+    { rel: "preconnect", href: "https://fonts.googleapis.com" },
+    { rel: "preconnect", href: "https://fonts.gstatic.com" },
+    {
+      rel: "stylesheet",
+      href: "https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap",
+    },
+  ];
 }
 
 // https://remix.run/api/conventions#default-export

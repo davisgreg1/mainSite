@@ -113,11 +113,11 @@ const particlesConfig = {
         quantity: 2,
       },
       repulse: {
-        distance: 200,
+        distance: 113,
         duration: 0.4,
         factor: 100,
         speed: 1,
-        maxSpeed: 50,
+        maxSpeed: 19,
         easing: "ease-out-quad",
       },
       slow: {
