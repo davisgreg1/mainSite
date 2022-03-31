@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import { useLoaderData } from "remix";
-import gMap from "~/images/home/gMap.png";
+import gLogo from "~/images/home/g32.png";
 
 const containerStyle = {
   width: "100%",
@@ -77,14 +77,15 @@ const MyMap = (props: MyMapProps) => {
       onLoad={onLoad}
       onUnmount={onUnmount}>
       <Marker
-        icon={{
-          path: gregText,
-          fillColor: "#0d47a1",
-          fillOpacity: 0.9,
-          scale: 1.5,
-          strokeColor: "#0d47a1",
-          strokeWeight: 2,
-        }}
+        icon={gLogo}
+        // icon={{
+        //   path: gregText,
+        //   fillColor: "#0d47a1",
+        //   fillOpacity: 0.9,
+        //   scale: 1.5,
+        //   strokeColor: "#0d47a1",
+        //   strokeWeight: 2,
+        // }}
         animation={google.maps.Animation.DROP}
         position={center}
         title={`I'm from NYC!`}
