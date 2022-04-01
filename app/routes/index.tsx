@@ -148,7 +148,6 @@ export default function IndexRoute() {
   const portfolioBackImgStyle = {
     backgroundColor: "#ecf0f3",
     display: "flex",
-    height: "100vh",
   };
 
   const portfolioBackImgStyleContact = {
