@@ -183,6 +183,13 @@
   color: white;
 }
 
+@media only screen and (max-width: 720px) {
+  .individual-card-container {
+    height: 600px;
+    width: auto;
+  }
+}
+
 .individual-card-content {
   margin: 0 auto;
   letter-spacing: 2px;
