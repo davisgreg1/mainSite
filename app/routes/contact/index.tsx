@@ -182,6 +182,7 @@ const Contact = () => {
                         value={name}
                         placeholder={name ? name : "Name"}
                         onChange={(e) => handleOnInputChange(e, "name")}
+                        autoFocus={true}
                       />
                     </div>
                     <div className="form-email">
