@@ -83,11 +83,13 @@ const BlogSlug = () => {
             </h5>
           )}
         </p>
-        {contentText?.map((content) => (
-          <p tabIndex={0} aria-label={content} className="uniq-blog-content">
-            {content}
-          </p>
-        ))}
+        <div className={"uniq-blog-content-container"}>
+          {contentText?.map((content: string) => (
+            <p tabIndex={0} aria-label={`blog content`} className="uniq-blog-content">
+              {content}
+            </p>
+          ))}
+        </div>
       </div>
     </>
   );
