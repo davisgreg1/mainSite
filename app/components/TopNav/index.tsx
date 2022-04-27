@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "remix";
 
 const TopNav = () => {
@@ -14,6 +14,23 @@ const TopNav = () => {
     if (e.key === "Enter" || e.key === " ") {
       setOpen(!open);
       setShowOrHideText(open ? "show" : "hide");
+    }
+  };
+
+  useEffect(() => {
+    if (open) {
+      document.addEventListener("keydown", handleOnEscKeyDown);
+    }
+    return () => {
+      document.removeEventListener("keydown", handleOnEscKeyDown);
+    };
+  }, [open]);
+
+  const handleOnEscKeyDown = (evt: KeyboardEvent) => {
+    if (evt.key === "Escape") {
+      setOpen(!open);
+      setShowOrHideText("show");
+
     }
   };
 
