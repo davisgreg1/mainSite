@@ -5,13 +5,16 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useCatch
-} from 'remix'
-import { Fragment } from 'react'
-import { LinksFunction } from 'remix'
-import globalStyleSheet from './styles/global.css'
-import sharedStyles from './styles/shared.css'
-import TopNav from './components/TopNav'
+  useCatch,
+} from "remix";
+import { Fragment } from "react";
+import Lottie from "react-lottie-player";
+import { LinksFunction } from "remix";
+import globalStyleSheet from "./styles/global.css";
+import sharedStyles from "./styles/shared.css";
+import TopNav from "./components/TopNav";
+
+import lottieJson from "./images/home/oops.json";
 
 // https://remix.run/api/app#links
 
@@ -34,11 +37,11 @@ export const links: LinksFunction = () => {
       href: "https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap",
     },
   ];
-}
+};
 
 // https://remix.run/api/conventions#default-export
 // https://remix.run/api/conventions#route-filenames
-export default function App () {
+export default function App() {
   return (
     <Document>
       <Layout>
@@ -46,34 +49,34 @@ export default function App () {
         <Outlet />
       </Layout>
     </Document>
-  )
+  );
 }
 
 // https://remix.run/docs/en/v1/api/conventions#errorboundary
-export function ErrorBoundary ({ error }: { error: Error }) {
-  console.error(error)
+export function ErrorBoundary({ error }: { error: Error }) {
+  console.error(error);
   return (
-    <Document title='Error!'>
+    <Document title="Error!">
       <Layout>
         <div>
-          <h1>There was an error</h1>
-          <p>{error.message}</p>
-          <hr />
-          <p>
-            Hey, developer, you should replace this with what you want your
-            users to see.
-          </p>
+          <Lottie
+            loop
+            animationData={lottieJson}
+            play
+            rendererSettings={{ preserveAspectRatio: 'xMidYMid slice' }}
+            style={{ height: '100%' }}
+          />
         </div>
       </Layout>
     </Document>
-  )
+  );
 }
 
 // https://remix.run/docs/en/v1/api/conventions#catchboundary
-export function CatchBoundary () {
-  let caught = useCatch()
+export function CatchBoundary() {
+  let caught = useCatch();
 
-  let message
+  let message;
   switch (caught.status) {
     case 401:
       message = (
@@ -81,16 +84,16 @@ export function CatchBoundary () {
           Oops! Looks like you tried to visit a page that you do not have access
           to.
         </p>
-      )
-      break
+      );
+      break;
     case 404:
       message = (
         <p>Oops! Looks like you tried to visit a page that does not exist.</p>
-      )
-      break
+      );
+      break;
 
     default:
-      throw new Error(caught.data || caught.statusText)
+      throw new Error(caught.data || caught.statusText);
   }
 
   return (
@@ -102,21 +105,21 @@ export function CatchBoundary () {
         {message}
       </Layout>
     </Document>
-  )
+  );
 }
 
-function Document ({
+function Document({
   children,
-  title
+  title,
 }: {
-  children: React.ReactNode
-  title?: string
+  children: React.ReactNode;
+  title?: string;
 }) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <head>
-        <meta charSet='utf-8' />
-        <meta name='viewport' content='width=device-width,initial-scale=1' />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
         {title ? <title>{title}</title> : null}
         <Meta />
         <Links />
@@ -125,12 +128,12 @@ function Document ({
         {children}
         <ScrollRestoration />
         <Scripts />
-        {process.env.NODE_ENV === 'development' && <LiveReload />}
+        {process.env.NODE_ENV === "development" && <LiveReload />}
       </body>
     </html>
-  )
+  );
 }
 
-function Layout ({ children }: { children: React.ReactNode }) {
-  return <Fragment>{children}</Fragment>
+function Layout({ children }: { children: React.ReactNode }) {
+  return <Fragment>{children}</Fragment>;
 }

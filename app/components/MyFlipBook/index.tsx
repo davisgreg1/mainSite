@@ -1,15 +1,14 @@
 import React, { useRef, useEffect, useState } from "react";
+import Lottie from "react-lottie-player";
 import { NavLink } from "remix";
 import HTMLFlipBook from "react-pageflip";
 import { useMediaQuery } from "react-responsive";
 import Page from "../Page";
 import PageCover from "../PageCover";
 import MySlides from "../MySlides";
+import lottieJson from "~/images/home/help.json";
 
 const MyFlipBook = (props: any) => {
-  useEffect(() => {
-    import("@lottiefiles/lottie-player");
-  });
   const isDesktopOrLaptop = useMediaQuery({ minWidth: 1241 });
   const isTabletVal = useMediaQuery({ minWidth: 720, maxWidth: 1240 });
   const isMobileVal = useMediaQuery({ maxWidth: 719 });
@@ -59,23 +58,23 @@ const MyFlipBook = (props: any) => {
             width={"150px"}
           />
         </div>
-        <p className="flipbook-slide-text">
+        <div className="flipbook-slide-text">
           <span className="shimmer-fancy-letter fancy-letter">𝓞</span>nce upon a
           time, I mentored a group of prospective students interested in
           learning web fundamentals at a wonderful school called Pursuit.
-        </p>
+        </div>
 
-        <p className="flipbook-slide-text">
+        <div className="flipbook-slide-text">
           I mentored them in pair-programming, debugging, whiteboarding, Node.js
           and how to use shell terminals.
-        </p>
-        <p className="flipbook-slide-text">
+        </div>
+        <div className="flipbook-slide-text">
           Ultimately, they were able to build a command line game!
-        </p>
-        <p className="flipbook-slide-text">
+        </div>
+        <div className="flipbook-slide-text">
           They went on to add these skills to their toolboxes as they became
           successful web developers.
-        </p>
+        </div>
       </div>
     </Page>,
     <Page isSlides={true} key="2" number={"2"}>
@@ -99,23 +98,23 @@ const MyFlipBook = (props: any) => {
             />
           </svg>
         </div>
-        <p className="flipbook-slide-text">
+        <div className="flipbook-slide-text">
           <span className="shimmer-fancy-letter fancy-letter">𝖘</span>oon after
           Pursuit, I joined Cognizant as a Software Engineer.
-        </p>
-        <p className="flipbook-slide-text">
+        </div>
+        <div className="flipbook-slide-text">
           At Cognizant I am responsible for building and maintaining web
           applications for one of the company's clients.
-        </p>
-        <p className="flipbook-slide-text">
+        </div>
+        <div className="flipbook-slide-text">
           I'm able to use many different technologies and frameworks to build a
           robust web application.
-        </p>
-        <p className="flipbook-slide-text">
+        </div>
+        <div className="flipbook-slide-text">
           On a daily basis I use React.js, Next.js, CSS3, HTML 5, JavaScript
           ES6, Node.js, Express.js, TypeScript, Jest, Cypress, Oracle ATG
           Business Control Center, and many more!
-        </p>
+        </div>
       </div>
     </Page>,
     <Page isSlides={true} key="3" number={"3"}>
@@ -149,25 +148,25 @@ const MyFlipBook = (props: any) => {
           </g>
         </svg>
       </div>
-      <p className="flipbook-slide-text">
+      <div className="flipbook-slide-text">
         <span className="shimmer-fancy-letter fancy-letter">𝓞</span>ne project
         I'm really excited about is AutoZone.
-      </p>
-      <p className="flipbook-slide-text">
+      </div>
+      <div className="flipbook-slide-text">
         I've been a member of the AutoZone Dev team since 2018!
-      </p>
-      <p className="flipbook-slide-text">
+      </div>
+      <div className="flipbook-slide-text">
         We migrated this amazing e-commerce site from an older stack to a new
         blazing fast modernized stack.
-      </p>
-      <p className="flipbook-slide-text">
+      </div>
+      <div className="flipbook-slide-text">
         We use an agile scrum methodology to get work done efficiently.{" "}
-      </p>
-      <p className="flipbook-slide-text">
+      </div>
+      <div className="flipbook-slide-text">
         We use many technologies here as the giant e-commerce site serves
         millions of people a year, generates billions in revenue and supports
         6,767 stores!
-      </p>
+      </div>
     </Page>,
     <Page isSlides={true} key="4" number={"4"}>
       <div className="data-container">
@@ -178,53 +177,50 @@ const MyFlipBook = (props: any) => {
             width={175}
           />
         </div>
-        <p className="flipbook-slide-text">
+        <div className="flipbook-slide-text">
           <span className="shimmer-fancy-letter fancy-letter">𝕸</span>
           oneycaptain is a family affair!
-        </p>
-        <p className="flipbook-slide-text">
+        </div>
+        <div className="flipbook-slide-text">
           My sister (who's also a dev) and I started this company because we
           feel confident we can use tech to help battle financial illiteracy.
-        </p>
-        <p className="flipbook-slide-text">
+        </div>
+        <div className="flipbook-slide-text">
           We use React Native, Express.js, Postgres, Git, Trello, GraphQL and
           other technologies in our work flow.
-        </p>
-        <p className="flipbook-slide-text">
+        </div>
+        <div className="flipbook-slide-text">
           We are currently working on HypePerks! HypePerks is designed for
           children to earn incentives for doing chores or just achieving goals
           set up!
-        </p>
-        <p className="flipbook-slide-text">
+        </div>
+        <div className="flipbook-slide-text">
           With our help, you can be the Captain of your Money Ship!
-        </p>
+        </div>
       </div>
     </Page>,
     <Page isSlides={true} key="5" number={"5"}>
       <div className="data-container">
         <div className="data-logo">
-          <lottie-player
-            autoplay
+          <Lottie
             loop
-            mode="normal"
-            id="firstLottie"
-            ref={lottieRef}
-            speed="1"
-            src="https://assets1.lottiefiles.com/packages/lf20_ymyikn6l.json"
-            style={{ width: "320px", height: "300px" }}></lottie-player>
+            animationData={lottieJson}
+            play
+            style={{ height: 200, width: 200 }}
+          />
         </div>
-        <p className="back-cover-first-text">
-          <p className="shimmer-fancy-letter fancy-letter">𝓣</p>
-          <p className="flipbook-slide-text">his story doesn't end here.</p>
-        </p>
-        <p className="flipbook-slide-text">
+        <div className="back-cover-first-text">
+          <div className="shimmer-fancy-letter fancy-letter">𝓣</div>
+          <div className="flipbook-slide-text">his story doesn't end here.</div>
+        </div>
+        <div className="flipbook-slide-text">
           I'm available to consult about your prospective project/idea.
-        </p>
-        <p className="flipbook-slide-text">
+        </div>
+        <div className="flipbook-slide-text">
           <NavLink className="contact-link-color shimmer" to={"contact"}>
             Send me a message!
           </NavLink>
-        </p>
+        </div>
       </div>
     </Page>,
   ];
@@ -285,21 +281,23 @@ const MyFlipBook = (props: any) => {
               alt="pursuit"
             />
           </div>
-          <p>
+          <div className="data-container-text">
             <span className="shimmer-fancy-letter fancy-letter">𝓞</span>nce upon
             a time, I mentored a group of prospective students interested in
             learning web fundamentals at a wonderful school called Pursuit.
-          </p>
+          </div>
 
-          <p>
+          <div className="data-container-text">
             I mentored them in pair-programming, debugging, whiteboarding,
             Node.js and how to use shell terminals.
-          </p>
-          <p>Ultimately, they were able to build a command line game!</p>
-          <p>
+          </div>
+          <div className="data-container-text">
+            Ultimately, they were able to build a command line game!
+          </div>
+          <div className="data-container-text">
             They went on to add these skills to their toolboxes as they became
             successful web developers.
-          </p>
+          </div>
         </div>
       </Page>
       <Page number={"3"}>
@@ -323,23 +321,23 @@ const MyFlipBook = (props: any) => {
               />
             </svg>
           </div>
-          <p>
+          <div className="data-container-text">
             <span className="shimmer-fancy-letter fancy-letter">𝖘</span>oon
             after Pursuit, I joined Cognizant as a Software Engineer.
-          </p>
-          <p>
+          </div>
+          <div className="data-container-text">
             At Cognizant I am responsible for building and maintaining web
             applications for one of the company's clients.
-          </p>
-          <p>
+          </div>
+          <div className="data-container-text">
             I'm able to use many different technologies and frameworks to build
             a robust web application.
-          </p>
-          <p>
+          </div>
+          <div className="data-container-text">
             On a daily basis I use React.js, Next.js, CSS3, HTML 5, JavaScript
             ES6, Node.js, Express.js, TypeScript, Jest, Cypress, Oracle ATG
             Business Control Center, and many more!
-          </p>
+          </div>
         </div>
       </Page>
       <Page number={"4"}>
@@ -374,23 +372,25 @@ const MyFlipBook = (props: any) => {
               </g>
             </svg>
           </div>
-          <p>
+          <div className="data-container-text">
             <span className="shimmer-fancy-letter fancy-letter">𝓞</span>ne
             project I'm really excited about is AutoZone.
-          </p>
-          <p>I've been a member of the AutoZone Dev team since 2018!</p>
-          <p>
+          </div>
+          <div className="data-container-text">
+            I've been a member of the AutoZone Dev team since 2018!
+          </div>
+          <div className="data-container-text">
             We migrated this amazing e-commerce site from an older stack to a
             new blazing fast modernized stack.
-          </p>
-          <p>
+          </div>
+          <div className="data-container-text">
             We use an agile scrum methodology to get work done efficiently.{" "}
-          </p>
-          <p>
+          </div>
+          <div className="data-container-text">
             We use many technologies here as the giant e-commerce site serves
             millions of people a year, generates billions in revenue and
             supports 6,767 stores!
-          </p>
+          </div>
         </div>
       </Page>
       <Page number={"5"}>
@@ -402,51 +402,52 @@ const MyFlipBook = (props: any) => {
               width={250}
             />
           </div>
-          <p>
+          <div className="data-container-text">
             <span className="shimmer-fancy-letter fancy-letter">𝕸</span>
             oneycaptain is a family affair!
-          </p>
-          <p>
+          </div>
+          <div className="data-container-text">
             My sister (who's also a dev) and I started this company because we
             feel confident we can use tech to help battle financial illiteracy.
-          </p>
-          <p>
+          </div>
+          <div className="data-container-text">
             We use React Native, Express.js, Postgres, Git, Trello, GraphQL and
             other technologies in our work flow.
-          </p>
-          <p>
+          </div>
+          <div className="data-container-text">
             We are currently working on HypePerks! HypePerks is designed for
             children to earn incentives for doing chores or just achieving goals
             set up!
-          </p>
-          <p>With our help, you can be the Captain of your Money Ship!</p>
+          </div>
+          <div className="data-container-text">
+            With our help, you can be the Captain of your Money Ship!
+          </div>
         </div>
       </Page>
       <Page number={"6"}>
         <div className="data-container">
           <div className="data-logo">
-            <lottie-player
-              autoplay
+            <Lottie
               loop
-              mode="normal"
-              id="secondLottie"
-              ref={secondLottieRef}
-              speed="1"
-              src="https://assets1.lottiefiles.com/packages/lf20_ymyikn6l.json"
-              style={{ width: "320px", height: "300px" }}></lottie-player>
+              animationData={lottieJson}
+              play
+              style={{ height: 400, width: 300 }}
+            />
           </div>
-          <p className="back-cover-first-text">
-            <p className="shimmer-fancy-letter fancy-letter">𝓣</p>
-            <p>his story doesn't end here.</p>
-          </p>
-          <p>I'm available to consult about your prospective project/idea.</p>
-          <p>
+          <div className="back-cover-first-text">
+            <div className="shimmer-fancy-letter fancy-letter">𝓣</div>
+            <div>his story doesn't end here.</div>
+          </div>
+          <div className="data-container-text">
+            I'm available to consult about your prospective project/idea.
+          </div>
+          <div className="data-container-text">
             <NavLink
               className="contact-link-color shimmer font22"
               to={"contact"}>
               Send me a message!
             </NavLink>
-          </p>
+          </div>
         </div>
       </Page>
       <PageCover backCover={true} number={"7"}></PageCover>
