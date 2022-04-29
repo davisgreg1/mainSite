@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import Lottie from "react-lottie-player";
 import { NavLink } from "remix";
 import HTMLFlipBook from "react-pageflip";
@@ -52,10 +53,11 @@ const MyFlipBook = (props: any) => {
     <Page isSlides={true} key="1" number={"1"}>
       <div className="data-container">
         <div className="data-logo">
-          <img
+          <LazyLoadImage
+            alt={"pursuit"}
+            height={50}
             src="data:image/png;base64,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"
-            alt="pursuit"
-            width={"150px"}
+            width={150}
           />
         </div>
         <div className="flipbook-slide-text">
@@ -171,10 +173,13 @@ const MyFlipBook = (props: any) => {
     <Page isSlides={true} key="4" number={"4"}>
       <div className="data-container">
         <div className="data-logo">
-          <img
-            src="https://www.moneycaptainlabs.com/wp-content/uploads/2021/02/logo-w.png"
-            alt="money captain labs"
-            width={175}
+          <LazyLoadImage
+            alt={"money captain labs"}
+            height={50}
+            src={
+              "https://www.moneycaptainlabs.com/wp-content/uploads/2021/02/logo-w.png"
+            }
+            width={150}
           />
         </div>
         <div className="flipbook-slide-text">
@@ -276,9 +281,11 @@ const MyFlipBook = (props: any) => {
       <Page number={"2"}>
         <div className="data-container">
           <div className="data-logo">
-            <img
+            <LazyLoadImage
+              alt={"pursuit"}
+              height={50}
               src="data:image/png;base64,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"
-              alt="pursuit"
+              width={150}
             />
           </div>
           <div className="data-container-text">
@@ -396,10 +403,13 @@ const MyFlipBook = (props: any) => {
       <Page number={"5"}>
         <div className="data-container">
           <div className="data-logo">
-            <img
-              src="https://www.moneycaptainlabs.com/wp-content/uploads/2021/02/logo-b.png"
-              alt="money captain labs"
-              width={250}
+            <LazyLoadImage
+              alt={"money captain labs"}
+              height={50}
+              src={
+                "https://www.moneycaptainlabs.com/wp-content/uploads/2021/02/logo-b.png"
+              }
+              width={150}
             />
           </div>
           <div className="data-container-text">
