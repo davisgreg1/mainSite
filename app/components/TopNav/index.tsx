@@ -30,7 +30,6 @@ const TopNav = () => {
     if (evt.key === "Escape") {
       setOpen(!open);
       setShowOrHideText("show");
-
     }
   };
 
@@ -50,6 +49,7 @@ const TopNav = () => {
         onClick={handleOnClick}
         onKeyDown={handleOnKeyDown}>
         <svg
+          width="auto"
           role="img"
           aria-labelledby="title desc"
           xmlns="http://www.w3.org/2000/svg"
@@ -76,6 +76,7 @@ const TopNav = () => {
               onClick={handleOnClick}
               className="close modal-button-close">
               <svg
+                width="auto"
                 xmlns="http://www.w3.org/2000/svg"
                 className="svg-icon"
                 fill="none"

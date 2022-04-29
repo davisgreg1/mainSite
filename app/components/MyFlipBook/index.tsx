@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import Lottie from "react-lottie-player";
 import { NavLink } from "remix";
 import HTMLFlipBook from "react-pageflip";
@@ -21,7 +21,7 @@ const MyFlipBook = (props: any) => {
     setIsMobile(isMobileVal);
     setIsTablet(isTabletVal);
     setIsDesktop(isDesktopOrLaptop);
-  });
+  }, [isMobileVal, isTabletVal, isDesktopOrLaptop]);
   const { inView = false } = props;
   const [page, setPage] = useState(0);
 
@@ -87,7 +87,7 @@ const MyFlipBook = (props: any) => {
             id="Cognizant_Logo"
             x="0px"
             y="0px"
-            width="auto"
+            width="100%"
             height="auto"
             viewBox="0 0 820 189.56"
             enableBackground="new 0 0 820 189.56"
@@ -310,7 +310,7 @@ const MyFlipBook = (props: any) => {
               id="Cognizant_Logo"
               x="0px"
               y="0px"
-              width="auto"
+              width="100%"
               height="auto"
               viewBox="0 0 820 189.56"
               enableBackground="new 0 0 820 189.56"
