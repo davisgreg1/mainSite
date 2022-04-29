@@ -53,7 +53,7 @@ const BlogSlug = () => {
           {" "}
           ↩ Go back
         </button>
-        <p className="uniq-blog-header">
+        <div className="uniq-blog-header">
           <h1
             tabIndex={0}
             aria-label={specificBlog?.fields?.title}
@@ -82,12 +82,12 @@ const BlogSlug = () => {
               Created: {dayjs(specificBlog?.createdAt).format("MMMM DD, YYYY")}
             </h5>
           )}
-        </p>
+        </div>
         <div className={"uniq-blog-content-container"}>
-          {contentText?.map((content: string) => (
-            <p tabIndex={0} aria-label={`blog content`} className="uniq-blog-content">
+          {contentText?.map((content: string, idx: number) => (
+            <div key={idx} tabIndex={0} aria-label={`blog content`} className="uniq-blog-content">
               {content}
-            </p>
+            </div>
           ))}
         </div>
       </div>

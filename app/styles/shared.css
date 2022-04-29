@@ -138,6 +138,11 @@
 
 .flipbook-slide-text {
   color: white;
+  margin: 16px 16px 16px 0;
+}
+
+.data-container-text {
+  margin: 16px 16px 16px 0;
 }
 
 .blog-card-container {
@@ -232,6 +237,7 @@
   display: flex;
   letter-spacing: 2px;
   font-size: 24px;
+  margin: 24px 0;
 }
 .uniq-blog-content-container {
   display: block;
