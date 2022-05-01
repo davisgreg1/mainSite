@@ -77,15 +77,15 @@ const MyMap = (props: MyMapProps) => {
       onLoad={onLoad}
       onUnmount={onUnmount}>
       <Marker
-        icon={gLogo}
-        // icon={{
-        //   path: gregText,
-        //   fillColor: "#0d47a1",
-        //   fillOpacity: 0.9,
-        //   scale: 1.5,
-        //   strokeColor: "#0d47a1",
-        //   strokeWeight: 2,
-        // }}
+        // icon={gLogo}
+        icon={{
+          path: gregText,
+          fillColor: "#0d47a1",
+          fillOpacity: 0.9,
+          scale: 1.5,
+          strokeColor: "#0d47a1",
+          strokeWeight: 2,
+        }}
         animation={google.maps.Animation.DROP}
         position={center}
         title={`I'm from NYC!`}
