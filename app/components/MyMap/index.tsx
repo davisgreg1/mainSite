@@ -79,7 +79,7 @@ const MyMap = (props: MyMapProps) => {
       <Marker
         // icon={gLogo}
         icon={{
-          path: gregText,
+          path: gText,
           fillColor: "#0d47a1",
           fillOpacity: 0.9,
           scale: 1.5,
