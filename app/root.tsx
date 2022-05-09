@@ -56,15 +56,13 @@ export function ErrorBoundary({ error }: { error: Error }) {
   return (
     <Document title="Error!">
       <Layout>
-        <div>
           <Lottie
             loop
             animationData={lottieJson}
             play
-            rendererSettings={{ preserveAspectRatio: 'xMidYMid slice' }}
-            style={{ height: '100%' }}
+            rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }}
+            style={{ height: "100%" }}
           />
-        </div>
       </Layout>
     </Document>
   );
@@ -78,15 +76,24 @@ export function CatchBoundary() {
   switch (caught.status) {
     case 401:
       message = (
-        <p>
-          Oops! Looks like you tried to visit a page that you do not have access
-          to.
-        </p>
+          <Lottie
+            loop
+            animationData={lottieJson}
+            play
+            rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }}
+            style={{ height: "100%" }}
+          />
       );
       break;
     case 404:
       message = (
-        <p>Oops! Looks like you tried to visit a page that does not exist.</p>
+          <Lottie
+            loop
+            animationData={lottieJson}
+            play
+            rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }}
+            style={{ height: "100%" }}
+          />
       );
       break;
 
@@ -97,9 +104,7 @@ export function CatchBoundary() {
   return (
     <Document title={`${caught.status} ${caught.statusText}`}>
       <Layout>
-        <h1>
-          {caught.status}: {caught.statusText}
-        </h1>
+        <a className="error-back-link" href="/">↩ Go Back</a>
         {message}
       </Layout>
     </Document>

@@ -12,3 +12,4 @@ api/_build/*
 .vercel
 api/_build/assets.json
 api/_build/index.js
+api/_build
