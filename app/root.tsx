@@ -7,6 +7,7 @@ import {
   ScrollRestoration,
   useCatch,
 } from "remix";
+import { ExternalScripts } from "remix-utils";
 import { Fragment } from "react";
 import Lottie from "react-lottie-player";
 import { LinksFunction } from "remix";
@@ -130,6 +131,7 @@ function Document({
       <body>
         {children}
         <ScrollRestoration />
+        <ExternalScripts />
         <Scripts />
         {process.env.NODE_ENV === "development" && <LiveReload />}
       </body>
