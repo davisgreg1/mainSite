@@ -101,6 +101,12 @@ ul {
   border: 1px solid #3a342c;
 }
 
+.kofi-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+}
+
 .back-cover {
   background: rgb(22, 150, 224)
     url("https://drive.google.com/uc?export=view&id=1mF-p0RvL9B0k-DDdFgPmWduSCfCk_MOb");

@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLoaderData, MetaFunction } from "remix";
 import type { LoaderFunction } from "remix";
+import { ExternalScriptsFunction } from "remix-utils";
+import { Helmet } from "react-helmet";
+import { StyledKofiButton } from "../../components/KofiButton";
 import dayjs from "dayjs";
 import { fetchContentfulData } from "~/utils/fetchContentfulData";
 import isEmptyObj from "~/utils/isEmptyObj";
@@ -24,6 +27,7 @@ export const loader: LoaderFunction = async ({ params }) => {
   };
   return data;
 };
+
 const BlogSlug = () => {
   const navigate = useNavigate();
   const [specificBlog, setSpecificBlog] = useState({});
@@ -85,10 +89,17 @@ const BlogSlug = () => {
         </div>
         <div className={"uniq-blog-content-container"}>
           {contentText?.map((content: string, idx: number) => (
-            <div key={idx} tabIndex={0} aria-label={`blog content`} className="uniq-blog-content">
-              {content}
-            </div>
+            <>
+              <div
+                key={idx}
+                tabIndex={0}
+                aria-label={`blog content`}
+                className="uniq-blog-content">
+                {content}
+              </div>
+            </>
           ))}
+          <StyledKofiButton />
         </div>
       </div>
     </>
