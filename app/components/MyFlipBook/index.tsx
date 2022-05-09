@@ -7,6 +7,7 @@ import { useMediaQuery } from "react-responsive";
 import Page from "../Page";
 import PageCover from "../PageCover";
 import MySlides from "../MySlides";
+import { StyledKofiButton } from "../KofiButton";
 import lottieJson from "~/images/home/help.json";
 
 const MyFlipBook = (props: any) => {
@@ -214,9 +215,9 @@ const MyFlipBook = (props: any) => {
             style={{ height: 200, width: 200 }}
           />
         </div>
-        <div className="back-cover-first-text">
-          <div className="shimmer-fancy-letter fancy-letter">𝓣</div>
-          <div className="flipbook-slide-text">his story doesn't end here.</div>
+        <div className="flipbook-slide-text">
+          <span className="shimmer-fancy-letter fancy-letter">𝓣</span>
+          his story doesn't end here.
         </div>
         <div className="flipbook-slide-text">
           I'm available to consult about your prospective project/idea.
@@ -226,6 +227,7 @@ const MyFlipBook = (props: any) => {
             Send me a message!
           </NavLink>
         </div>
+        <StyledKofiButton color="black" />
       </div>
     </Page>,
   ];
@@ -457,6 +459,7 @@ const MyFlipBook = (props: any) => {
               to={"contact"}>
               Send me a message!
             </NavLink>
+            <StyledKofiButton color="#785e3a" />
           </div>
         </div>
       </Page>

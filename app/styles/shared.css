@@ -139,6 +139,7 @@
 .flipbook-slide-text {
   color: white;
   margin: 16px 16px 16px 0;
+  align-self: flex-start;
 }
 
 .data-container-text {
