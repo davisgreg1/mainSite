@@ -147,6 +147,7 @@ ul {
 .contact-link-color {
   color: inherit;
   display: flex;
+  white-space: pre;
 }
 
 .font22 {

@@ -99,7 +99,7 @@ const BlogSlug = () => {
               </div>
             </>
           ))}
-          <StyledKofiButton />
+          <StyledKofiButton color="0D47A1" />
         </div>
       </div>
     </>
