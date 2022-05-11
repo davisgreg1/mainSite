@@ -230,7 +230,7 @@ export default function IndexRoute() {
           Blogs
         </div>
         <p className="section-main-heading">Blogs</p>
-        <BlogWall blogs={blogs} />
+        <BlogWall blogs={blogs} isMobile={isMobile} />
       </section>
       <section
         id="section-contactMe"
