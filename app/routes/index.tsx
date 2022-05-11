@@ -110,6 +110,10 @@ export default function IndexRoute() {
   const isMobileVal = useMediaQuery({ maxWidth: 719 });
 
   const [isMobile, setIsMobile] = useState(isMobileVal);
+  console.log(
+    "GREG LOOK!  ~ file: index.tsx ~ line 113 ~ IndexRoute ~ isMobile",
+    isMobile,
+  );
   const [isTablet, setIsTablet] = useState(isTabletVal);
   const [isDesktop, setIsDesktop] = useState(isDesktopOrLaptop);
   const [isDisabled, setIsDisabled] = useState(true);
@@ -143,11 +147,6 @@ export default function IndexRoute() {
     setEmail("");
     setSubject("");
     setMessage("");
-  };
-
-  const portfolioBackImgStyle = {
-    backgroundColor: "#ecf0f3",
-    display: "flex",
   };
 
   const portfolioBackImgStyleContact = {
@@ -218,8 +217,7 @@ export default function IndexRoute() {
         <Particles id="tsparticles" options={particlesConfig} />
       </section>
       <section
-        style={isMobile ? { display: "flex" } : portfolioBackImgStyle}
-        className="section-child"
+        className="section-child portfolio-container"
         id="section-portfolio">
         <div className="section-big-word section-big-word-work">WORK</div>
         <MyFlipBook />
