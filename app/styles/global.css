@@ -104,7 +104,6 @@ ul {
 .kofi-btn {
   display: flex;
   justify-content: center;
-  margin-top: 10%;
 }
 
 .back-cover {
@@ -148,6 +147,7 @@ ul {
   color: inherit;
   display: flex;
   white-space: pre;
+  padding-bottom: 16px;
 }
 
 .font22 {
@@ -187,10 +187,12 @@ ul {
 
 .page-number-flexStart {
   align-self: flex-start;
+  margin-bottom: 16px;
 }
 
 .page-number-flexEnd {
   align-self: flex-end;
+  margin-bottom: 16px;
 }
 
 .portfolio-item {
