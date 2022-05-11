@@ -110,10 +110,6 @@ export default function IndexRoute() {
   const isMobileVal = useMediaQuery({ maxWidth: 719 });
 
   const [isMobile, setIsMobile] = useState(isMobileVal);
-  console.log(
-    "GREG LOOK!  ~ file: index.tsx ~ line 113 ~ IndexRoute ~ isMobile",
-    isMobile,
-  );
   const [isTablet, setIsTablet] = useState(isTabletVal);
   const [isDesktop, setIsDesktop] = useState(isDesktopOrLaptop);
   const [isDisabled, setIsDisabled] = useState(true);
