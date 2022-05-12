@@ -14,8 +14,8 @@ import { LinksFunction } from "remix";
 import globalStyleSheet from "./styles/global.css";
 import sharedStyles from "./styles/shared.css";
 import TopNav from "./components/TopNav";
-
 import lottieJson from "./images/home/oops.json";
+import lottieJson404 from "./images/home/404.json";
 
 // https://remix.run/api/app#links
 
@@ -57,13 +57,13 @@ export function ErrorBoundary({ error }: { error: Error }) {
   return (
     <Document title="Error!">
       <Layout>
-          <Lottie
-            loop
-            animationData={lottieJson}
-            play
-            rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }}
-            style={{ height: "100%" }}
-          />
+        <Lottie
+          loop
+          animationData={lottieJson}
+          play
+          rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }}
+          style={{ height: "100%" }}
+        />
       </Layout>
     </Document>
   );
@@ -77,6 +77,7 @@ export function CatchBoundary() {
   switch (caught.status) {
     case 401:
       message = (
+        <div className="error-container">
           <Lottie
             loop
             animationData={lottieJson}
@@ -84,17 +85,20 @@ export function CatchBoundary() {
             rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }}
             style={{ height: "100%" }}
           />
+        </div>
       );
       break;
     case 404:
       message = (
+        <div className="error-container">
           <Lottie
             loop
-            animationData={lottieJson}
+            animationData={lottieJson404}
             play
             rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }}
             style={{ height: "100%" }}
           />
+        </div>
       );
       break;
 
@@ -105,8 +109,13 @@ export function CatchBoundary() {
   return (
     <Document title={`${caught.status} ${caught.statusText}`}>
       <Layout>
-        <a className="error-back-link" href="/">↩ Go Back</a>
         {message}
+        <a
+          aria-label="Go back to home page"
+          className="error-back-link"
+          href="/">
+          ↩ Go Back
+        </a>
       </Layout>
     </Document>
   );
