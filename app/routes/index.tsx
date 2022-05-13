@@ -161,6 +161,7 @@ export default function IndexRoute() {
     zoomControl: false,
     fullscreenControl: false,
   };
+
   const handleOnInputChange = (
     e:
       | React.ChangeEvent<HTMLInputElement>
