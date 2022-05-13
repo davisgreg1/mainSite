@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "remix";
+import throttle from "~/utils/throttle";
 
 const TopNav = () => {
   const [open, setOpen] = useState(false);
   const [showOrHideText, setShowOrHideText] = useState("show");
+  const [scrollY, setScrollY] = useState(0);
 
   const handleOnClick = () => {
     setOpen(!open);
@@ -26,6 +28,13 @@ const TopNav = () => {
     };
   }, [open]);
 
+  useEffect(() => {
+    document.addEventListener("scroll", handleOnScroll);
+    return () => {
+      document.removeEventListener("scroll", handleOnScroll);
+    };
+  }, []);
+
   const handleOnEscKeyDown = (evt: KeyboardEvent) => {
     if (evt.key === "Escape") {
       setOpen(!open);
@@ -33,10 +42,18 @@ const TopNav = () => {
     }
   };
 
+  const handleOnScroll = () => {
+    const scrollYValue  = window.pageYOffset || document.documentElement.scrollTop
+    throttle(setScrollY(scrollYValue), 5000);
+  }
+
   let activeStyle = {
     textDecoration: "underline",
     textUnderlineOffset: "4px",
   };
+
+
+  const shouldShowWhite = scrollY > 1053 && scrollY < 2372;
 
   return (
     <>
@@ -45,7 +62,9 @@ const TopNav = () => {
         aria-pressed={open}
         aria-haspopup="dialog"
         tabIndex={0}
-        className={`hamburgerMenu-nav-${showOrHideText}`}
+        className={`hamburgerMenu-nav-${showOrHideText} ${
+          shouldShowWhite ? `hamburgerMenu-nav-${showOrHideText}-svg` : ""
+        }`}
         onClick={handleOnClick}
         onKeyDown={handleOnKeyDown}>
         <svg
