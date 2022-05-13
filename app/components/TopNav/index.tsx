@@ -33,7 +33,7 @@ const TopNav = () => {
     return () => {
       document.removeEventListener("scroll", handleOnScroll);
     };
-  }, []);
+  }, [scrollY]);
 
   const handleOnEscKeyDown = (evt: KeyboardEvent) => {
     if (evt.key === "Escape") {
@@ -44,7 +44,7 @@ const TopNav = () => {
 
   const handleOnScroll = () => {
     const scrollYValue  = window.pageYOffset || document.documentElement.scrollTop
-    throttle(setScrollY(scrollYValue), 5000);
+    throttle(setScrollY(scrollYValue), 100);
   }
 
   let activeStyle = {
