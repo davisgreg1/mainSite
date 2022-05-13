@@ -45,6 +45,12 @@ body {
     }
   }
 
+  @media screen and (max-width: 720px) {
+    .hamburgerMenu-nav-show-svg > svg {
+      color: white;
+    }   
+  }
+
 
 .section-child {
   scroll-snap-align: start;
