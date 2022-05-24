@@ -1,3 +1,5 @@
+## Site live [here](https://gregdavistech.com/)
+
 # Welcome to Remix!
 
 - [Remix Docs](https://remix.run/docs)
@@ -33,4 +35,3 @@ Open up [http://localhost:3000](http://localhost:3000) and you should be ready t
 
 If you're used to using the `vercel dev` command provided by [Vercel CLI](https://vercel.com/cli) instead, you can also use that, but it's not needed.
 
-## Site live [here](https://gregdavistech.com/)
