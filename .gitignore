@@ -13,3 +13,4 @@ api/_build/*
 api/_build/assets.json
 api/_build/index.js
 api/_build
+newrelic_agent.log
