@@ -146,6 +146,16 @@
   margin: 16px 16px 16px 0;
 }
 
+[data-testid="carousel"] > div {
+  display: flex;
+  align-items: center;
+  margin: 0 8px;
+}
+
+.carousel-arrow {
+  color: lightgray;
+}
+
 .blog-card-container {
   display: flex;
   flex-wrap: wrap;
