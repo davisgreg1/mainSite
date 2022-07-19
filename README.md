@@ -1,4 +1,4 @@
-## Site live [here](https://gregdavistech.com/)
+<a href="https://gregdavistech.com/" target="_blank">Site Live Here</a>
 
 # Welcome to Remix!
 
