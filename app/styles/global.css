@@ -12,6 +12,11 @@ html {
   font-family: "Poppins", sans-serif;
 }
 
+.cmsEntry {
+  text-decoration: none;
+  color: #188fff;
+}
+
 .error-container {
   display: flex;
   justify-content: center;
