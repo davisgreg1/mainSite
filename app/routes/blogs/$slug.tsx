@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import snarkdown from "snarkdown";
 import { useNavigate } from "react-router-dom";
 import { useLoaderData, MetaFunction } from "remix";
 import type { LoaderFunction } from "remix";
@@ -30,22 +31,14 @@ export const loader: LoaderFunction = async ({ params }) => {
 
 const BlogSlug = () => {
   const navigate = useNavigate();
-  const [specificBlog, setSpecificBlog] = useState({});
   const data = useLoaderData();
   const { blogs, slug } = data;
   const blogsEmpty = isEmptyObj(blogs);
+  const specificBlog = !blogsEmpty
+    ? blogs?.filter((blog: any) => blog.id === slug)[0]
+    : {};
 
-  useEffect(() => {
-    if (!blogsEmpty) {
-      setSpecificBlog(blogs.filter((blog) => blog.id === slug)[0]);
-    }
-  }, [blogs]);
-
-  const contentText = specificBlog?.fields?.body?.content?.map((content) => {
-    return content.content.map((content) => {
-      return content.value;
-    });
-  });
+  let contentText = snarkdown(specificBlog.fields?.body);
 
   const updatedAvailable = specificBlog?.updatedAt;
   const handleOnClick = () => navigate(-1);
@@ -88,17 +81,12 @@ const BlogSlug = () => {
           )}
         </div>
         <div className={"uniq-blog-content-container"}>
-          {contentText?.map((content: string, idx: number) => (
-            <>
-              <div
-                key={idx}
-                tabIndex={0}
-                aria-label={`blog content`}
-                className="uniq-blog-content">
-                {content}
-              </div>
-            </>
-          ))}
+          <div
+            tabIndex={0}
+            aria-label={`blog content`}
+            className="uniq-blog-content"
+            dangerouslySetInnerHTML={{ __html: contentText }}
+          />
           <StyledKofiButton color="0D47A1" />
         </div>
       </div>

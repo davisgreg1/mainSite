@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import contentful from "contentful";
+const contentful = require("contentful");
 
 export const fetchContentfulData = async (
   CONTENTFUL_SPACE_ID: string,
@@ -22,7 +21,7 @@ export const fetchContentfulData = async (
     });
     return response;
   } catch (error) {
-    console.log(
+    console.error(
       "GREG LOOK!  ~ file: index.tsx ~ line 87 ~ useEffect ~ error",
       error,
     );

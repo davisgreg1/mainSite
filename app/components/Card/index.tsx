@@ -1,4 +1,5 @@
 import { Link, useLoaderData } from "remix";
+import snarkdown from "snarkdown";
 import ellipseText from "~/utils/ellipsisText";
 import dayjs from "dayjs";
 
@@ -8,17 +9,11 @@ interface CardProps {
 }
 const Card = (props: CardProps) => {
   const { blog, blogPage } = props;
-  const content = blog.fields.body.content;
-  const contentText = content.map((content) => {
-    return content.content.map((content) => {
-      return content.value;
-    });
-  });
+  const content = snarkdown(blog.fields.body);
 
-  const contentTextJoined = contentText.join(" ");
   const contentToDisplay = blogPage
-    ? ellipseText(contentTextJoined, 300)
-    : ellipseText(contentTextJoined, 200);
+    ? ellipseText(content, 300)
+    : ellipseText(content, 200);
 
   return (
     <Link
@@ -34,9 +29,11 @@ const Card = (props: CardProps) => {
         <div className="individual-card-title">
           <h1 className="card-title-text">{blog.fields.title}</h1>
         </div>
-        <div id="contentToDisplay" className="individual-card-content">
-          {contentToDisplay}
-        </div>
+        <div
+          id="contentToDisplay"
+          className="individual-card-content"
+          dangerouslySetInnerHTML={{ __html: contentToDisplay }}
+        />
         <footer className="individual-card-footer">
           <p className="individual-card-footer-text">
             Greg Davis <span className="individual-card-footer-span">|</span>{" "}
