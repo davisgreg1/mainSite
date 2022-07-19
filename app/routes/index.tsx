@@ -216,7 +216,7 @@ export default function IndexRoute() {
       <section
         className="section-child portfolio-container"
         id="section-portfolio">
-        <div className="section-big-word section-big-word-work">WORK</div>
+        <div className="section-big-word section-big-word-work">Work</div>
         <MyFlipBook />
       </section>
       <section className="section-child" id="section-skills">
@@ -237,7 +237,6 @@ export default function IndexRoute() {
         id="section-contactMe"
         className="section-content section section-child "
         style={portfolioBackImgStyleContact}>
-        <div className="section-big-word-contact">Contact</div>
         <div className="contact-container">
           <div className="form-container">
             <Form

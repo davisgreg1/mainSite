@@ -32,25 +32,23 @@ body {
   scroll-snap-type: y mandatory;
 }
 
-
-  @media screen and (max-width: 719px) {
-    .portfolio-container {
-      display: flex;
-    }
+@media screen and (max-width: 719px) {
+  .portfolio-container {
+    display: flex;
   }
+}
 
-  @media screen and (min-width: 720px) {
-    .portfolio-container {
-      background-color: #ecf0f3;
-    }
+@media screen and (min-width: 720px) {
+  .portfolio-container {
+    background-color: #ecf0f3;
   }
+}
 
-  @media screen and (max-width: 719px) {
-    .hamburgerMenu-nav-show-svg > svg {
-      color: white;
-    }   
+@media screen and (max-width: 719px) {
+  .hamburgerMenu-nav-show-svg > svg {
+    color: white;
   }
-
+}
 
 .section-child {
   scroll-snap-align: start;
@@ -59,11 +57,11 @@ body {
 .section-big-word {
   display: flex;
   width: 100%;
-  font-size: 89px;
+  font-size: 100px;
   position: absolute;
   margin-bottom: 600px;
   margin-top: 24px;
-  opacity: 0.5;
+  opacity: 0.3;
   user-select: none;
 }
 .section-big-word-contact {
@@ -104,6 +102,7 @@ body {
 }
 
 #section-contactMe {
+  order: 5;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -191,6 +190,7 @@ body {
   height: 1100px;
   min-height: 100vh;
   display: flex;
+  order: 1;
 }
 
 #section-portfolio {
@@ -199,9 +199,15 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  order: 2;
 }
 
-#section-skills, #section-blog {
+#section-skills {
+  order: 3;
+}
+
+#section-skills,
+#section-blog {
   justify-content: center;
   display: flex;
   width: 100%;
@@ -213,13 +219,16 @@ body {
 }
 
 #section-blog {
-  height: 100vh;
-  margin-bottom: 150px;
+  order: 4;
 }
 
 .section {
   display: flex;
   justify-content: flex-start;
+}
+
+.section-big-word-blog {
+  margin-top: -600px;
 }
 
 .section-big-word-contact,
@@ -311,6 +320,16 @@ body {
   .section-main-heading {
     display: none;
   }
+  #section-blog {
+    height: 1100px;
+  }
+}
+@media screen and (max-width: 719px) {
+  #section-blog,
+  #section-skills,
+  #section-blog {
+    height: auto;
+  }
 }
 
 .mobile-slides-container {
@@ -400,4 +419,5 @@ textarea {
   display: flex;
   width: 100%;
   padding: 16px;
+  order: 5;
 }
