@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "../Card";
 import { Carousel } from "@trendyol-js/react-carousel";
+import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
 
 interface BlogWallProps {
   blogs: any;
@@ -19,8 +20,18 @@ const BlogWall = (props: BlogWallProps) => {
       ) : isMobile ? (
         <Carousel
           responsive={true}
-          rightArrow={<></>}
-          leftArrow={<></>}
+          leftArrow={
+            <div className="carousel-arrow">
+              {" "}
+              <AiFillLeftCircle />{" "}
+            </div>
+          }
+          rightArrow={
+            <div className="carousel-arrow">
+              {" "}
+              <AiFillRightCircle />{" "}
+            </div>
+          }
           swipeOn={0.25}
           transition={0.5}
           show={1}
