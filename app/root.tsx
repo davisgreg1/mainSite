@@ -145,7 +145,6 @@ function Document({
   const location = useLocation();
   const loaderData = useLoaderData();
   const { gaTrackingId, nodeEnv} = loaderData;
-  console.log('GREG LOOK!  ~ file: root.tsx ~ line 148 ~ nodeEnv', nodeEnv);
 
   useEffect(() => {
     if (gaTrackingId?.length) {
@@ -162,6 +161,10 @@ function Document({
         <Links />
       </head>
       <body>
+        {children}
+        <ScrollRestoration />
+        <ExternalScripts />
+        <Scripts />
         {nodeEnv === "development" || !gaTrackingId ? null : (
           <>
             <script
@@ -184,10 +187,6 @@ function Document({
             />
           </>
         )}
-        {children}
-        <ScrollRestoration />
-        <ExternalScripts />
-        <Scripts />
         {process.env.NODE_ENV === "development" && <LiveReload />}
       </body>
     </html>

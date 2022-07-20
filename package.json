@@ -45,11 +45,11 @@
     "simple-icons": "^6.23.0",
     "slick-carousel": "^1.8.1",
     "snarkdown": "^2.0.0",
-    "sweetalert2": "^11.4.23"
+    "sweetalert2": "^11.4.23",
+    "@remix-run/vercel": "^1.6.5"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.6.5",
-    "@remix-run/vercel": "^1.6.5",
     "@types/react": "^17.0.47",
     "@types/react-dom": "^17.0.17",
     "@types/react-lazy-load-image-component": "^1.5.2",
