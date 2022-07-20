@@ -43,13 +43,13 @@ export const links: LinksFunction = () => {
   ];
 };
 
-type LoaderData = {
-  gaTrackingId: string | undefined;
-};
-
 // Load the GA tracking id from the .env
 export const loader: LoaderFunction = async () => {
-  return json<LoaderData>({ gaTrackingId: process.env.GA_TRACKING_ID });
+  // return json<LoaderData>({ gaTrackingId: process.env.GA_TRACKING_ID });
+  return {
+    gaTrackingId: process.env.GA_TRACKING_ID,
+    nodeEnv: process.env.NODE_ENV
+  };
 };
 
 // https://remix.run/api/conventions#default-export
@@ -143,7 +143,9 @@ function Document({
   title?: string;
 }) {
   const location = useLocation();
-  const { gaTrackingId } = useLoaderData<LoaderData>();
+  const loaderData = useLoaderData();
+  const { gaTrackingId, nodeEnv} = loaderData;
+  console.log('GREG LOOK!  ~ file: root.tsx ~ line 148 ~ nodeEnv', nodeEnv);
 
   useEffect(() => {
     if (gaTrackingId?.length) {
@@ -160,7 +162,7 @@ function Document({
         <Links />
       </head>
       <body>
-        {process.env.NODE_ENV === "development" || !gaTrackingId ? null : (
+        {nodeEnv === "development" || !gaTrackingId ? null : (
           <>
             <script
               async
