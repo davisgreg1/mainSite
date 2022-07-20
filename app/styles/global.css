@@ -90,15 +90,7 @@ ul {
 .demo-book,
 .stf__parent {
   margin: 16px;
-  /* transform: translate3d(-56px, 25px, 10px) rotate(10deg) !important;
-  transition: transform 2s; */
 }
-/* 
-@media screen and (max-width: 900px) {
-  .demo-book {
-    transform: translateZ(0) !important;
-  }
-} */
 
 .front-cover {
   background-image: url("https://drive.google.com/uc?export=view&id=1i9NVQ9SOEFbzVsIo0u51qcZcVTwFPCHX") !important;
