@@ -7,7 +7,7 @@ import {
   ScrollRestoration,
   useCatch,
   useLoaderData,
-  useLocation
+  useLocation,
 } from "remix";
 import type { LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
@@ -48,7 +48,7 @@ export const loader: LoaderFunction = async () => {
   // return json<LoaderData>({ gaTrackingId: process.env.GA_TRACKING_ID });
   return {
     gaTrackingId: process.env.GA_TRACKING_ID,
-    nodeEnv: process.env.NODE_ENV
+    nodeEnv: process.env.NODE_ENV,
   };
 };
 
@@ -144,7 +144,7 @@ function Document({
 }) {
   const location = useLocation();
   const loaderData = useLoaderData();
-  const { gaTrackingId, nodeEnv} = loaderData;
+  const { gaTrackingId, nodeEnv } = loaderData;
 
   useEffect(() => {
     if (gaTrackingId?.length) {
@@ -168,11 +168,6 @@ function Document({
         {nodeEnv === "development" || !gaTrackingId ? null : (
           <>
             <script
-              async
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaTrackingId}`}
-            />
-            <script
-              async
               id="gtag-init"
               dangerouslySetInnerHTML={{
                 __html: `
@@ -184,6 +179,10 @@ function Document({
                 });
               `,
               }}
+            />
+            <script
+              defer
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaTrackingId}`}
             />
           </>
         )}

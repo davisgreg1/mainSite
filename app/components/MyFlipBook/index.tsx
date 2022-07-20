@@ -24,28 +24,15 @@ const MyFlipBook = (props: any) => {
     setIsTablet(isTabletVal);
     setIsDesktop(isDesktopOrLaptop);
   }, [isMobileVal, isTabletVal, isDesktopOrLaptop]);
-  const { inView = false } = props;
+
   const [page, setPage] = useState(0);
 
   const pageFlip = useRef<HTMLDivElement>(null);
-  const lottieRef = useRef<HTMLDivElement>(null);
-  const secondLottieRef = useRef<HTMLDivElement>(null);
-
-  // const shouldRenderFlipBook = true
   const shouldRenderFlipBook = isTablet || isDesktop;
-
-  // useEffect(() => {
-  //   if (pageFlip?.current) {
-  //     if (inView && page <= 1) {
-  //       pageFlip.current.pageFlip().flip(1)
-  //     }
-  //   }
-  // }, [inView])
 
   const flipBookStyle = {
     width: isTablet ? `350px` : `500px`,
     height: "733px",
-    // transform: `translate(3px, 3px)`
   };
 
   const onPage = (e: any) => setPage(e.data);
