@@ -6,9 +6,13 @@ import {
   Scripts,
   ScrollRestoration,
   useCatch,
+  useLoaderData,
+  useLocation
 } from "remix";
+import type { LoaderFunction } from "@remix-run/node";
+import { json } from "@remix-run/node";
 import { ExternalScripts } from "remix-utils";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import Lottie from "react-lottie-player";
 import { LinksFunction } from "remix";
 import globalStyleSheet from "./styles/global.css";
@@ -16,6 +20,7 @@ import sharedStyles from "./styles/shared.css";
 import TopNav from "./components/TopNav";
 import lottieJson from "./images/home/oops.json";
 import lottieJson404 from "./images/home/404.json";
+import * as gtag from "~/utils/gtags.client";
 
 // https://remix.run/api/app#links
 
@@ -36,6 +41,15 @@ export const links: LinksFunction = () => {
       href: "https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap",
     },
   ];
+};
+
+type LoaderData = {
+  gaTrackingId: string | undefined;
+};
+
+// Load the GA tracking id from the .env
+export const loader: LoaderFunction = async () => {
+  return json<LoaderData>({ gaTrackingId: process.env.GA_TRACKING_ID });
 };
 
 // https://remix.run/api/conventions#default-export
@@ -128,6 +142,14 @@ function Document({
   children: React.ReactNode;
   title?: string;
 }) {
+  const location = useLocation();
+  const { gaTrackingId } = useLoaderData<LoaderData>();
+
+  useEffect(() => {
+    if (gaTrackingId?.length) {
+      gtag.pageview(location.pathname, gaTrackingId);
+    }
+  }, [location, gaTrackingId]);
   return (
     <html lang="en">
       <head>
@@ -138,6 +160,28 @@ function Document({
         <Links />
       </head>
       <body>
+        {process.env.NODE_ENV === "development" || !gaTrackingId ? null : (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaTrackingId}`}
+            />
+            <script
+              async
+              id="gtag-init"
+              dangerouslySetInnerHTML={{
+                __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gaTrackingId}', {
+                  page_path: window.location.pathname,
+                });
+              `,
+              }}
+            />
+          </>
+        )}
         {children}
         <ScrollRestoration />
         <ExternalScripts />
